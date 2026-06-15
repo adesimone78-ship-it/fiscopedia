@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://www.stipendionetto.it/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://www.stipendionetto.it/forfettario.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.stipendionetto.it/confronto.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.stipendionetto.it/blog.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+
+  <!-- RAL pages -->
+  <url><loc>https://www.stipendionetto.it/ral/20000.html</loc><priority>0.7</priority></url>
+  <url><loc>https://www.stipendionetto.it/ral/25000.html</loc><priority>0.7</priority></url>
+  <url><loc>https://www.stipendionetto.it/ral/28000.html</loc><priority>0.7</priority></url>
+  <url><loc>https://www.stipendionetto.it/ral/30000.html</loc><priority>0.7</priority></url>
+  <url><loc>https://www.stipendionetto.it/ral/35000.html</loc><priority>0.7</priority></url>
+  <url><loc>https://www.stipendionetto.it/ral/40000.html</loc><priority>0.7</priority></url>
+  <url><loc>https://www.stipendionetto.it/ral/50000.html</loc><priority>0.7</priority></url>
+  <url><loc>https://www.stipendionetto.it/ral/60000.html</loc><priority>0.7</priority></url>
+  <url><loc>https://www.stipendionetto.it/ral/75000.html</loc><priority>0.6</priority></url>
+  <url><loc>https://www.stipendionetto.it/ral/100000.html</loc><priority>0.6</priority></url>
+
+  <!-- Professioni -->
+  <url><loc>https://www.stipendionetto.it/professioni/insegnante.html</loc><priority>0.7</priority></url>
+  <url><loc>https://www.stipendionetto.it/professioni/ingegnere.html</loc><priority>0.7</priority></url>
+  <url><loc>https://www.stipendionetto.it/professioni/medico.html</loc><priority>0.7</priority></url>
+  <url><loc>https://www.stipendionetto.it/professioni/infermiere.html</loc><priority>0.7</priority></url>
+  <url><loc>https://www.stipendionetto.it/professioni/programmatore.html</loc><priority>0.7</priority></url>
+
+  <!-- Blog -->
+  <url><loc>https://www.stipendionetto.it/blog/come-calcolare-stipendio-netto.html</loc><priority>0.7</priority></url>
+  <url><loc>https://www.stipendionetto.it/blog/irpef-2026.html</loc><priority>0.7</priority></url>
+  <url><loc>https://www.stipendionetto.it/blog/forfettario-vs-dipendente.html</loc><priority>0.7</priority></url>
+  <url><loc>https://www.stipendionetto.it/blog/addizionale-regionale.html</loc><priority>0.6</priority></url>
+  <url><loc>https://www.stipendionetto.it/blog/tfr-come-funziona.html</loc><priority>0.6</priority></url>
+  <url><loc>https://www.stipendionetto.it/blog/aumentare-stipendio-netto.html</loc><priority>0.6</priority></url>
+
+  <!-- Pages -->
+  <url><loc>https://www.stipendionetto.it/chi-siamo.html</loc><priority>0.4</priority></url>
+  <url><loc>https://www.stipendionetto.it/contatti.html</loc><priority>0.4</priority></url>
+  <url><loc>https://www.stipendionetto.it/privacy.html</loc><priority>0.3</priority></url>
+  <url><loc>https://www.stipendionetto.it/cookie.html</loc><priority>0.3</priority></url>
+  <url><loc>https://www.stipendionetto.it/disclaimer.html</loc><priority>0.3</priority></url>
+</urlset>

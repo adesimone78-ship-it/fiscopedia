@@ -1,0 +1,253 @@
+═══════════════════════════════════════════════════════════════════════
+  StipendioNetto.it — Istruzioni di deploy e configurazione AdSense
+═══════════════════════════════════════════════════════════════════════
+
+Sito statico HTML/CSS/JS pronto per Google AdSense. Nessun build, nessun
+framework, nessuna dipendenza server-side. Si può ospitare su qualunque
+hosting statico: Netlify, Vercel, GitHub Pages, Aruba, Cloudflare Pages,
+o anche un semplice spazio FTP.
+
+
+─── 1. STRUTTURA FILE ──────────────────────────────────────────────────
+
+  index.html                  → Homepage con calcolatore principale
+  forfettario.html            → Calcolatore P.IVA forfettaria
+  confronto.html              → Confronto due stipendi affiancati
+  blog.html                   → Lista articoli
+  chi-siamo.html              → Pagina "Chi siamo" (richiesta da AdSense)
+  contatti.html               → Pagina contatti (richiesta da AdSense)
+  privacy.html                → Privacy Policy GDPR
+  cookie.html                 → Cookie Policy
+  disclaimer.html             → Disclaimer legale
+
+  assets/
+    styles.css                → Design system (Syne + DM Sans + indigo)
+    salary.js                 → Engine fiscale 2026 (IRPEF, INPS, ecc.)
+    site.js                   → Cookie banner + caricamento AdSense
+
+  blog/
+    come-calcolare-stipendio-netto.html
+    irpef-2026.html
+    forfettario-vs-dipendente.html
+    addizionale-regionale.html
+    tfr-come-funziona.html
+    aumentare-stipendio-netto.html
+
+  ral/                        → 10 pagine SEO per RAL specifiche
+    20000.html ... 100000.html
+
+  professioni/                → 5 pagine professione
+    insegnante.html, ingegnere.html, medico.html,
+    infermiere.html, programmatore.html
+
+  sitemap.xml                 → Sitemap per Google Search Console
+  robots.txt                  → Allow per tutti i bot
+  ads.txt                     → Authorized sellers AdSense
+
+
+─── 2. PRIMA DEL DEPLOY: 4 CONFIGURAZIONI OBBLIGATORIE ─────────────────
+
+  PASSO A — Publisher ID AdSense
+  --------------------------------
+  Cerca in TUTTI i file la stringa:
+      ca-pub-XXXXXXXXXXXXXXXX
+  e sostituiscila con il tuo Publisher ID AdSense (formato:
+  ca-pub-1234567890123456). Il modo più rapido:
+
+    grep -rl "ca-pub-XXXXXXXXXXXXXXXX" . | xargs sed -i '' \\
+      "s/ca-pub-XXXXXXXXXXXXXXXX/ca-pub-IL-TUO-ID/g"
+
+  Su Windows usa un editor con "Find in Files" (VS Code: Cmd+Shift+F).
+
+  File coinvolti:
+    - assets/site.js
+    - ads.txt
+    - Tutti i file HTML con tag <ins class="adsbygoogle">
+
+
+  PASSO B — Ad Slot IDs
+  --------------------------------
+  Ogni <ins> nei file HTML ha un attributo data-ad-slot="..." con un
+  numero placeholder. Vai sulla dashboard AdSense → "Annunci" → "Per
+  unità annuncio" e crea le unità annuncio. Sostituisci ogni
+  data-ad-slot con l'ID reale dell'unità (numero a 10 cifre).
+
+  Slot consigliati da creare:
+    - 1× Banner orizzontale responsive (per top dei tool)
+    - 1× Rettangolo medio (per metà pagina)
+    - 1× In-feed (per il blog)
+    - 1× In-article (per dentro gli articoli)
+
+
+  PASSO C — ads.txt
+  --------------------------------
+  Apri il file ads.txt nella root e sostituisci:
+      pub-XXXXXXXXXXXXXXXX
+  con il tuo Publisher ID senza il prefisso "ca-" (es. pub-1234567890123456).
+
+  Esempio finale del file:
+      google.com, pub-1234567890123456, DIRECT, f08c47fec0942fa0
+
+
+  PASSO D — Dominio nei canonical e nella sitemap
+  --------------------------------
+  Cerca/sostituisci:
+      https://www.stipendionetto.it
+  con il dominio dove ospiterai il sito (anche provvisorio). File:
+    - sitemap.xml
+    - Tutti i file HTML (link canonical + meta og:url + JSON-LD)
+
+
+─── 3. CARICAMENTO ADSENSE: COME FUNZIONA ──────────────────────────────
+
+  Lo script principale AdSense NON viene caricato all'apertura della
+  pagina. Viene caricato solo DOPO che l'utente clicca "Accetta" sul
+  banner cookie. Questo è il comportamento corretto secondo GDPR.
+
+  Se l'utente clicca "Rifiuta", AdSense non viene mai caricato.
+
+  Il banner appare automaticamente alla prima visita e memorizza la
+  scelta in localStorage (sn_cookie_choice). Per testare un nuovo
+  banner: apri la console del browser e digita:
+      localStorage.clear()
+  poi ricarica.
+
+
+─── 4. SUBMISSION AD ADSENSE: CHECKLIST ────────────────────────────────
+
+  Prima di sottoporre il sito ad AdSense per l'approvazione:
+
+  [✓] Sostituito Publisher ID e Ad Slot IDs
+  [✓] Caricato il sito su un dominio (anche subdominio o staging)
+  [✓] ads.txt accessibile a https://tuodominio.it/ads.txt
+  [✓] sitemap.xml accessibile a https://tuodominio.it/sitemap.xml
+  [✓] robots.txt accessibile a https://tuodominio.it/robots.txt
+  [✓] Tutte le pagine legali raggiungibili dal footer
+  [✓] Sito indicizzabile da Google (no noindex, nessun blocco robots)
+  [✓] HTTPS attivo (Google AdSense lo richiede)
+  [✓] Aggiunto codice di verifica al tuo account AdSense (lo trovi
+       nella dashboard "Siti" quando aggiungi il sito)
+
+  Poi vai su https://adsense.google.com/ → Siti → Aggiungi sito,
+  inserisci il dominio e segui la procedura di verifica.
+
+  Tempi di approvazione: solitamente 1-3 settimane.
+
+
+─── 5. GOOGLE ANALYTICS (OPZIONALE) ────────────────────────────────────
+
+  Se vuoi attivare Google Analytics 4, modifica assets/site.js
+  aggiungendo dopo la funzione loadAdSense():
+
+      function loadGA4() {
+        if (document.getElementById("ga4-script")) return;
+        const s = document.createElement("script");
+        s.id = "ga4-script";
+        s.async = true;
+        s.src = "https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX";
+        document.head.appendChild(s);
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX', { anonymize_ip: true });
+      }
+
+  E chiamala nello stesso punto in cui viene chiamata loadAdSense()
+  (cioè dopo il consenso "accept" del cookie banner).
+
+  Sostituisci G-XXXXXXXXXX con il tuo Measurement ID GA4.
+
+
+─── 6. SEO E SEARCH CONSOLE ────────────────────────────────────────────
+
+  Dopo il deploy:
+  1. Vai su https://search.google.com/search-console
+  2. Aggiungi il dominio come proprietà
+  3. Carica sitemap.xml come sitemap principale
+  4. Richiedi l'indicizzazione delle pagine prioritarie (homepage,
+     blog articles, RAL pages più cercate come /ral/30000.html)
+
+  Le pagine /ral/[amount].html e /professioni/[nome].html sono
+  ottimizzate per long-tail SEO: cerca i match con keyword tool
+  (es. "stipendio netto 30000 euro" o "stipendio ingegnere").
+
+
+─── 7. MANUTENZIONE PERIODICA ──────────────────────────────────────────
+
+  GENNAIO DI OGNI ANNO:
+  - Aggiornare scaglioni IRPEF in assets/salary.js (funzione calcIrpef)
+    se ci sono state modifiche normative
+  - Aggiornare aliquote addizionali regionali (oggetto ADDIZIONALE_REGIONALE)
+  - Aggiornare anno fiscale nei titoli/descrizioni (cerca "2026")
+  - Aggiungere il nuovo anno fiscale al footer
+
+  OGNI 3-6 MESI:
+  - Aggiungere 1-2 nuovi articoli blog per crescita SEO
+  - Verificare che le aliquote INPS siano sempre quelle correnti
+    (cambia raramente, ma controllare le circolari INPS di gennaio)
+
+
+─── 8. PERSONALIZZAZIONI COMUNI ────────────────────────────────────────
+
+  CAMBIARE I COLORI:
+  Modifica assets/styles.css all'inizio del file, sezione :root {...}.
+  Le variabili principali:
+    --accent: #6366f1     (indigo primario, cambia per il brand)
+    --bg, --surface, --text, --sub, --border (sistema)
+
+  CAMBIARE I FONT:
+  Sempre in assets/styles.css:
+    --font-display: "Syne", ...   (titoli)
+    --font-body: "DM Sans", ...   (corpo)
+  E aggiorna l'import Google Fonts nei <head> di tutti i file HTML.
+
+  AGGIUNGERE UNA NUOVA RAL:
+  Copia uno dei file in ral/, rinominalo (es. 45000.html), apri e
+  fai cerca/sostituisci della cifra. Aggiungi il link in:
+    - sitemap.xml
+    - index.html (sezione "Esplora per RAL")
+    - I link prev/next nelle RAL adiacenti
+
+  AGGIUNGERE UNA PROFESSIONE:
+  Copia uno dei file in professioni/, modifica il contenuto specifico
+  (intro, fasce, RAL media, range). Aggiungi a sitemap e homepage.
+
+
+─── 9. RISOLUZIONE PROBLEMI ────────────────────────────────────────────
+
+  PROBLEMA: AdSense dice "il sito non è pronto per la pubblicazione"
+  CAUSA: Probabilmente troppo poco contenuto o navigazione non chiara.
+  SOLUZIONE: Aggiungi 5-10 articoli blog di qualità (minimo 1000 parole
+  ciascuno) prima di risottomettere. Aspetta almeno 2-4 settimane di
+  traffico organico minimo.
+
+  PROBLEMA: Il calcolatore non funziona
+  CAUSA: Assets non caricati o JavaScript bloccato.
+  SOLUZIONE: Verifica che /assets/salary.js e /assets/site.js siano
+  raggiungibili. Apri la Developer Console del browser (F12) e cerca
+  errori.
+
+  PROBLEMA: Cookie banner non scompare dopo il click
+  CAUSA: localStorage bloccato dal browser.
+  SOLUZIONE: Verifica che il sito sia servito via HTTPS e che
+  localStorage sia abilitato nel browser.
+
+
+─── 10. CONTATTI E LICENZA ─────────────────────────────────────────────
+
+  Questo è un progetto editoriale: tutti i contenuti sono originali.
+  Puoi usarlo, modificarlo e ospitarlo liberamente. Il design system
+  è basato su Google Fonts (Syne + DM Sans) liberamente utilizzabili.
+
+  Per qualunque dubbio sulla normativa fiscale italiana, consulta:
+  - Agenzia delle Entrate: www.agenziaentrate.gov.it
+  - INPS: www.inps.it
+  - Sito ufficiale del Ministero del Lavoro
+
+  Disclaimer: i calcoli sono indicativi, per la busta paga ufficiale
+  serve sempre un consulente del lavoro o un CAF.
+
+═══════════════════════════════════════════════════════════════════════
+  Buon lancio! 🚀
+═══════════════════════════════════════════════════════════════════════

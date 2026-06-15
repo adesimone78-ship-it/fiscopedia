@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Calcolatore Regime Forfettario 2026 — P.IVA · StipendioNetto.it</title>
+<meta name="description" content="Calcola netto e tasse con il regime forfettario 2026: imposta sostitutiva 5%/15%, INPS gestione separata, coefficienti ATECO. Confronto con dipendente." />
+<link rel="canonical" href="https://www.stipendionetto.it/forfettario.html" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-logo">S</span>
+      <span>StipendioNetto<span class="dot">.it</span></span>
+    </a>
+    <div class="nav-links">
+      <a class="nav-link" href="index.html">Calcolatore</a>
+      <a class="nav-link active" href="forfettario.html">Forfettario</a>
+      <a class="nav-link" href="blog.html">Blog</a>
+      <a class="nav-link" href="chi-siamo.html">Chi siamo</a>
+      <a class="nav-cta" href="#tool">Calcola ora</a>
+    </div>
+    <button class="nav-mobile-toggle" aria-label="Menu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<div class="container"><div class="crumb"><a href="index.html">Home</a><span class="sep">›</span>Forfettario</div></div>
+
+<header class="hero" style="padding-bottom:24px">
+  <div class="hero-inner">
+    <span class="eyebrow" style="color:var(--amber);background:var(--amber-soft);border-color:color-mix(in oklab, var(--amber) 22%, transparent)">Partita IVA · Forfettario 2026</span>
+    <h1>Quanto <span class="accent" style="color:var(--amber)">guadagni netto</span> in forfettario?</h1>
+    <p class="lead">Calcola in pochi secondi quanto resta in tasca dopo INPS gestione separata e imposta sostitutiva. Con confronto in tempo reale rispetto al lavoro dipendente.</p>
+  </div>
+</header>
+
+<section id="tool" class="section" style="padding-top:24px">
+  <div class="container">
+
+    <div class="calc" style="grid-template-columns:380px 1fr">
+      <div class="calc-inputs">
+
+        <div class="calc-field">
+          <span class="calc-label">Fatturato annuo</span>
+          <span id="fatt-display" class="calc-value-display">€40.000</span>
+          <input id="fatturato" type="range" class="salary-slider" min="5000" max="85000" step="500" value="40000" />
+          <div class="slider-range"><span>€5.000</span><span>€85.000 (limite)</span></div>
+        </div>
+
+        <div class="calc-field">
+          <span class="calc-label">Categoria ATECO</span>
+          <select id="categoria" class="calc-select"></select>
+        </div>
+
+        <div class="calc-field">
+          <span class="calc-label">Aliquota imposta sostitutiva</span>
+          <div class="segmented" id="aliquota">
+            <button data-a="5">5% <span style="opacity:.7;font-size:11px">(nuovi)</span></button>
+            <button class="on" data-a="15">15% <span style="opacity:.7;font-size:11px">(ordinari)</span></button>
+          </div>
+          <span class="calc-helper">5% per i primi 5 anni di nuova attività · 15% regime ordinario.</span>
+        </div>
+
+      </div>
+
+      <div class="calc-results">
+
+        <div class="result-hero" style="background:linear-gradient(135deg, var(--amber-soft), color-mix(in oklab, var(--amber) 6%, var(--surface)));border-color:color-mix(in oklab, var(--amber) 22%, transparent)">
+          <div class="label">Netto annuo stimato</div>
+          <div id="netto-anno" class="big" style="color:var(--amber)">€0</div>
+          <div class="sub"><span id="netto-mese">€0</span>/mese · Imposta <span id="al-show">15%</span> · Coeff. <span id="cf-show">78%</span></div>
+        </div>
+
+        <div style="font-size:12px;color:var(--sub);text-transform:uppercase;letter-spacing:.1em;margin:12px 0 8px">Dettaglio calcolo</div>
+        <table class="breakdown">
+          <tbody>
+            <tr><td>Fatturato</td><td id="d-fatt">€0</td></tr>
+            <tr><td>Imponibile (coeff. × fatturato)</td><td id="d-imp">€0</td></tr>
+            <tr class="negative"><td>− INPS gestione separata (26,07%)</td><td id="d-inps">€0</td></tr>
+            <tr><td>= Imponibile dopo INPS</td><td id="d-impd">€0</td></tr>
+            <tr class="negative"><td>− Imposta sostitutiva</td><td id="d-imposta">€0</td></tr>
+            <tr class="total"><td>= Netto annuo</td><td id="d-netto">€0</td></tr>
+          </tbody>
+        </table>
+
+        <div style="background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:18px;margin-top:20px">
+          <p style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--sub);font-weight:600;margin-bottom:14px">Confronto con dipendente (stessa RAL, Lombardia)</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div style="background:var(--amber-soft);border:1px solid color-mix(in oklab, var(--amber) 22%, transparent);border-radius:12px;padding:14px;text-align:center">
+              <div style="font-size:10px;color:var(--sub);text-transform:uppercase;letter-spacing:.08em">Forfettario</div>
+              <div id="cmp-f" style="font-family:var(--font-display);font-weight:800;font-size:22px;color:var(--amber);margin-top:4px">€0</div>
+              <div style="font-size:11px;color:var(--sub)">netto/anno</div>
+            </div>
+            <div style="background:var(--accent-soft);border:1px solid color-mix(in oklab, var(--accent) 22%, transparent);border-radius:12px;padding:14px;text-align:center">
+              <div style="font-size:10px;color:var(--sub);text-transform:uppercase;letter-spacing:.08em">Dipendente</div>
+              <div id="cmp-d" style="font-family:var(--font-display);font-weight:800;font-size:22px;color:var(--accent);margin-top:4px">€0</div>
+              <div style="font-size:11px;color:var(--sub)">netto/anno</div>
+            </div>
+          </div>
+          <div id="cmp-msg" style="margin-top:14px;text-align:center;padding:10px;border-radius:10px;font-size:14px;font-weight:500;background:var(--amber-soft);color:var(--amber)">—</div>
+          <p style="font-size:11px;color:var(--muted);margin-top:10px;text-align:center">Il confronto non include tutele del lavoro dipendente: TFR, NASPI, ferie, malattia.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- AdSense -->
+    <div class="ad-wrap">
+      <div class="ad-label">Pubblicità</div>
+      <div class="ad-slot ad-leader">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="3456789012" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <span>Spazio pubblicitario AdSense (728×90)</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── COSA SAPERE ─────────────────────────────────────────────────── -->
+<section class="section" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="container-narrow">
+    <div class="section-head">
+      <span class="eyebrow">Da sapere</span>
+      <h2 style="margin-top:14px">Regime forfettario: come funziona</h2>
+    </div>
+
+    <div class="prose">
+      <p>Il <strong>regime forfettario</strong> è un regime fiscale agevolato pensato per piccoli professionisti, artigiani e commercianti con ricavi annui fino a <strong>85.000 euro</strong>. Sostituisce IRPEF, IRAP e addizionali con un'unica <strong>imposta sostitutiva</strong> al 15% (o al 5% per i primi cinque anni di nuova attività).</p>
+
+      <h3>Come si calcola l'imponibile</h3>
+      <p>Non si parte dai costi reali, ma da un <strong>coefficiente di redditività</strong> stabilito per legge in base al codice ATECO. Per i professionisti è il 78%: significa che si presume un 22% di costi forfettari, e si pagano le tasse solo sul 78% del fatturato.</p>
+
+      <h3>I contributi INPS</h3>
+      <p>L'INPS si paga a parte e <strong>non rientra nell'imposta sostitutiva</strong>. Per i professionisti senza Cassa è la <strong>Gestione Separata INPS</strong> al 26,07%. Per artigiani e commercianti ci sono contributi fissi annuali (circa 4.500€) più una quota variabile sul reddito eccedente.</p>
+
+      <h3>Quando conviene davvero</h3>
+      <p>Il forfettario conviene quando i tuoi <strong>costi reali sono inferiori</strong> al coefficiente forfettario previsto per la tua categoria. Se hai un'attività con pochi costi (come una consulenza), il vantaggio è notevole. Se hai molti costi (commercio, ristorazione), il regime ordinario può essere più vantaggioso.</p>
+
+      <blockquote>
+        ⚠️ Attenzione: superare gli 85.000€ di ricavi nell'anno fa uscire automaticamente dal regime forfettario l'anno successivo. Superare i 100.000€ fa uscire dal regime già nell'anno in corso.
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <a href="index.html" class="brand"><span class="brand-logo">S</span><span>StipendioNetto<span class="dot">.it</span></span></a>
+        <p>Il calcolatore stipendio netto gratuito per il mercato italiano. Aggiornato all'anno fiscale 2026.</p>
+      </div>
+      <div><h4>Strumenti</h4><ul><li><a href="index.html">Calcolatore RAL→Netto</a></li><li><a href="forfettario.html">Forfettario P.IVA</a></li><li><a href="blog.html">Blog</a></li></ul></div>
+      <div><h4>Sito</h4><ul><li><a href="chi-siamo.html">Chi siamo</a></li><li><a href="contatti.html">Contatti</a></li></ul></div>
+      <div><h4>Legale</h4><ul><li><a href="privacy.html">Privacy Policy</a></li><li><a href="cookie.html">Cookie Policy</a></li><li><a href="disclaimer.html">Disclaimer</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 StipendioNetto.it</span><span>I calcoli sono indicativi e non sostituiscono il parere di un consulente fiscale.</span></div>
+  </div>
+</footer>
+
+<div id="cookie-banner" class="cookie-banner hidden">
+  <p>Questo sito utilizza cookie tecnici e, previo consenso, cookie di terze parti per personalizzare annunci e analizzare il traffico. <a href="cookie.html">Cookie Policy</a>.</p>
+  <div class="actions">
+    <button class="btn btn-secondary btn-sm" data-cookie="reject">Rifiuta</button>
+    <button class="btn btn-primary btn-sm" data-cookie="accept">Accetta</button>
+  </div>
+</div>
+
+<script src="assets/salary.js"></script>
+<script src="assets/site.js"></script>
+<script>
+(() => {
+  const S = window.SalaryEngine;
+  const state = { fatturato: 40000, categoria: "Professionisti", aliquota: 15 };
+
+  const sel = document.getElementById("categoria");
+  Object.keys(S.COEFF_FORFETTARI).forEach(c => {
+    const o = document.createElement("option");
+    o.value = c; o.textContent = `${c} (${S.COEFF_FORFETTARI[c]}%)`;
+    sel.appendChild(o);
+  });
+
+  const fmt = n => "€" + Math.round(n).toLocaleString("it-IT");
+
+  function update() {
+    const r = S.calcForfettario(state);
+    const dip = S.calcSalary({ ral: state.fatturato, regione: "Lombardia", tipoContratto: "dipendente", mensilita: 13 });
+
+    document.getElementById("fatt-display").textContent = fmt(state.fatturato);
+    document.getElementById("netto-anno").textContent = fmt(r.netto);
+    document.getElementById("netto-mese").textContent = fmt(r.nettoMensile);
+    document.getElementById("al-show").textContent = state.aliquota + "%";
+    document.getElementById("cf-show").textContent = Math.round(r.coeff * 100) + "%";
+    document.getElementById("d-fatt").textContent = fmt(state.fatturato);
+    document.getElementById("d-imp").textContent = fmt(r.imponibile);
+    document.getElementById("d-inps").textContent = "−" + fmt(r.inps);
+    document.getElementById("d-impd").textContent = fmt(r.imponibileDopoInps);
+    document.getElementById("d-imposta").textContent = "−" + fmt(r.imposta);
+    document.getElementById("d-netto").textContent = fmt(r.netto);
+    document.getElementById("cmp-f").textContent = fmt(r.netto);
+    document.getElementById("cmp-d").textContent = fmt(dip.nettoAnnuo);
+
+    const msg = document.getElementById("cmp-msg");
+    const diff = r.netto - dip.nettoAnnuo;
+    if (diff > 0) {
+      msg.textContent = `Il forfettario conviene di ${fmt(diff)}/anno`;
+      msg.style.background = "var(--amber-soft)"; msg.style.color = "var(--amber)";
+    } else {
+      msg.textContent = `Il dipendente conviene di ${fmt(-diff)}/anno`;
+      msg.style.background = "var(--accent-soft)"; msg.style.color = "var(--accent)";
+    }
+
+    document.getElementById("fatturato").style.setProperty("--slider-pct", ((state.fatturato - 5000) / 80000 * 100) + "%");
+  }
+
+  document.getElementById("fatturato").addEventListener("input", e => { state.fatturato = +e.target.value; update(); });
+  document.getElementById("categoria").addEventListener("change", e => { state.categoria = e.target.value; update(); });
+  document.querySelectorAll("#aliquota button").forEach(b => {
+    b.addEventListener("click", () => {
+      document.querySelectorAll("#aliquota button").forEach(x => x.classList.remove("on"));
+      b.classList.add("on");
+      state.aliquota = +b.dataset.a;
+      update();
+    });
+  });
+
+  update();
+})();
+</script>
+
+</body>
+</html>

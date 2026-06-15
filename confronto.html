@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Confronto stipendi: due RAL a confronto — StipendioNetto.it</title>
+<meta name="description" content="Confronta due stipendi netti fianco a fianco. Differenza di netto in tasca tra due RAL e regioni diverse. IRPEF 2026, INPS e addizionali." />
+<link rel="canonical" href="https://www.stipendionetto.it/confronto.html" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/styles.css" />
+<style>
+  .compare-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+  @media (max-width: 820px) { .compare-grid { grid-template-columns:1fr; } }
+  .compare-col { background:var(--surface); border:1px solid var(--border); border-radius: var(--r-lg); padding: 24px; }
+  .compare-col.a { border-color: color-mix(in oklab, var(--accent) 30%, var(--border)); }
+  .compare-col.b { border-color: color-mix(in oklab, var(--green) 30%, var(--border)); }
+  .compare-col h3 { font-size: 18px; margin-bottom: 16px; display:flex; align-items:center; gap:10px; }
+  .compare-col .swatch { width: 12px; height:12px; border-radius: 4px; }
+  .compare-col.a .swatch { background: var(--accent); }
+  .compare-col.b .swatch { background: var(--green); }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand"><span class="brand-logo">S</span><span>StipendioNetto<span class="dot">.it</span></span></a>
+    <div class="nav-links">
+      <a class="nav-link" href="index.html">Calcolatore</a>
+      <a class="nav-link" href="forfettario.html">Forfettario</a>
+      <a class="nav-link active" href="confronto.html">Confronto</a>
+      <a class="nav-link" href="blog.html">Blog</a>
+      <a class="nav-link" href="chi-siamo.html">Chi siamo</a>
+      <a class="nav-cta" href="#tool">Confronta</a>
+    </div>
+    <button class="nav-mobile-toggle" aria-label="Menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+  </div>
+</nav>
+
+<div class="container"><div class="crumb"><a href="index.html">Home</a><span class="sep">›</span>Confronto stipendi</div></div>
+
+<header class="hero" style="padding:48px 0 24px">
+  <div class="hero-inner">
+    <span class="eyebrow">Comparatore</span>
+    <h1>Confronta <span class="accent">due stipendi</span> fianco a fianco</h1>
+    <p class="lead">Stai valutando due offerte di lavoro o vuoi confrontare il netto in due regioni diverse? Inserisci le due RAL e vedi subito la differenza in tasca.</p>
+  </div>
+</header>
+
+<section id="tool" class="section" style="padding-top:24px">
+  <div class="container">
+
+    <div class="compare-grid">
+      <!-- COLONNA A -->
+      <div class="compare-col a">
+        <h3><span class="swatch"></span>Offerta A</h3>
+        <div class="calc-field">
+          <span class="calc-label">RAL</span>
+          <span id="a-display" class="calc-value-display" style="font-size:22px">€35.000</span>
+          <input id="a-ral" type="range" class="salary-slider" min="10000" max="150000" step="500" value="35000" />
+        </div>
+        <div class="calc-field">
+          <span class="calc-label">Regione</span>
+          <select id="a-regione" class="calc-select"></select>
+        </div>
+        <div class="calc-field">
+          <span class="calc-label">Mensilità</span>
+          <div class="segmented" data-target="a-m">
+            <button data-m="12">12</button>
+            <button class="on" data-m="13">13</button>
+            <button data-m="14">14</button>
+          </div>
+        </div>
+
+        <div style="background:var(--accent-soft);border-radius:12px;padding:14px;margin-top:18px">
+          <div style="font-size:11px;color:var(--sub);text-transform:uppercase;letter-spacing:.08em">Netto mensile</div>
+          <div id="a-mese" style="font-family:var(--font-display);font-weight:800;font-size:32px;color:var(--accent);margin-top:4px">€0</div>
+          <div style="font-size:13px;color:var(--sub)"><span id="a-anno">€0</span> netto annuo</div>
+        </div>
+
+        <table class="breakdown" style="margin-top:14px;font-size:12.5px">
+          <tbody>
+            <tr><td>RAL</td><td id="a-lordo">—</td></tr>
+            <tr class="negative"><td>− INPS</td><td id="a-inps">—</td></tr>
+            <tr class="negative"><td>− IRPEF</td><td id="a-irpef">—</td></tr>
+            <tr class="negative"><td>− Addizionali</td><td id="a-add">—</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- COLONNA B -->
+      <div class="compare-col b">
+        <h3><span class="swatch"></span>Offerta B</h3>
+        <div class="calc-field">
+          <span class="calc-label">RAL</span>
+          <span id="b-display" class="calc-value-display" style="font-size:22px">€42.000</span>
+          <input id="b-ral" type="range" class="salary-slider" min="10000" max="150000" step="500" value="42000" />
+        </div>
+        <div class="calc-field">
+          <span class="calc-label">Regione</span>
+          <select id="b-regione" class="calc-select"></select>
+        </div>
+        <div class="calc-field">
+          <span class="calc-label">Mensilità</span>
+          <div class="segmented" data-target="b-m">
+            <button data-m="12">12</button>
+            <button class="on" data-m="13">13</button>
+            <button data-m="14">14</button>
+          </div>
+        </div>
+
+        <div style="background:var(--green-soft);border-radius:12px;padding:14px;margin-top:18px">
+          <div style="font-size:11px;color:var(--sub);text-transform:uppercase;letter-spacing:.08em">Netto mensile</div>
+          <div id="b-mese" style="font-family:var(--font-display);font-weight:800;font-size:32px;color:var(--green);margin-top:4px">€0</div>
+          <div style="font-size:13px;color:var(--sub)"><span id="b-anno">€0</span> netto annuo</div>
+        </div>
+
+        <table class="breakdown" style="margin-top:14px;font-size:12.5px">
+          <tbody>
+            <tr><td>RAL</td><td id="b-lordo">—</td></tr>
+            <tr class="negative"><td>− INPS</td><td id="b-inps">—</td></tr>
+            <tr class="negative"><td>− IRPEF</td><td id="b-irpef">—</td></tr>
+            <tr class="negative"><td>− Addizionali</td><td id="b-add">—</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- VERDETTO -->
+    <div id="verdetto" style="margin-top:32px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:32px;text-align:center">
+      <div style="font-size:11px;color:var(--sub);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px">Differenza in tasca</div>
+      <div id="diff-mese" style="font-family:var(--font-display);font-weight:800;font-size:44px;color:var(--text)">€0</div>
+      <div id="diff-label" style="color:var(--sub);margin-top:4px">in più al mese con l'offerta B</div>
+      <div id="diff-anno" style="margin-top:14px;font-size:14px;color:var(--sub)">€0 / anno · differenza RAL <span id="diff-ral">€0</span></div>
+    </div>
+
+    <div class="ad-wrap">
+      <div class="ad-label">Pubblicità</div>
+      <div class="ad-slot ad-leader">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="2222222222" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <span>Spazio pubblicitario AdSense</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--surface);border-top:1px solid var(--border)">
+  <div class="container-narrow">
+    <div class="section-head">
+      <span class="eyebrow">Come usare il confronto</span>
+      <h2 style="margin-top:14px">Tre scenari tipici</h2>
+    </div>
+
+    <div class="prose">
+      <h3>1. Due offerte di lavoro</h3>
+      <p>Hai ricevuto due proposte di assunzione con RAL diverse, magari in due regioni diverse. Il confronto ti mostra quanto effettivamente porteresti a casa in ciascuna ipotesi — utile soprattutto quando l'offerta con RAL più alta è in una regione con addizionale più pesante.</p>
+
+      <h3>2. Cambio di città</h3>
+      <p>Stai valutando un trasferimento da una regione all'altra a parità di stipendio. Imposta la stessa RAL nelle due colonne, cambia solo la regione, e vedi quanto cambia il netto solo per effetto delle addizionali locali.</p>
+
+      <h3>3. Negoziazione aumento</h3>
+      <p>Vuoi capire quanto netto in più ti porta un aumento di RAL. Inserisci la tua RAL attuale a sinistra e quella proposta a destra: il sistema ti mostra il guadagno reale tenendo conto della progressività IRPEF — che spesso erode buona parte dell'aumento nominale.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-about"><a href="index.html" class="brand"><span class="brand-logo">S</span><span>StipendioNetto<span class="dot">.it</span></span></a><p>Il calcolatore stipendio netto gratuito per il mercato italiano.</p></div>
+      <div><h4>Strumenti</h4><ul><li><a href="index.html">Calcolatore</a></li><li><a href="forfettario.html">Forfettario</a></li><li><a href="confronto.html">Confronto</a></li><li><a href="blog.html">Blog</a></li></ul></div>
+      <div><h4>Sito</h4><ul><li><a href="chi-siamo.html">Chi siamo</a></li><li><a href="contatti.html">Contatti</a></li></ul></div>
+      <div><h4>Legale</h4><ul><li><a href="privacy.html">Privacy</a></li><li><a href="cookie.html">Cookie</a></li><li><a href="disclaimer.html">Disclaimer</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 StipendioNetto.it</span></div>
+  </div>
+</footer>
+
+<div id="cookie-banner" class="cookie-banner hidden">
+  <p>Questo sito utilizza cookie tecnici e, previo consenso, cookie di terze parti per personalizzare annunci. <a href="cookie.html">Cookie Policy</a>.</p>
+  <div class="actions"><button class="btn btn-secondary btn-sm" data-cookie="reject">Rifiuta</button><button class="btn btn-primary btn-sm" data-cookie="accept">Accetta</button></div>
+</div>
+
+<script src="assets/salary.js"></script>
+<script src="assets/site.js"></script>
+<script>
+(() => {
+  const S = window.SalaryEngine;
+  const fmt = n => "€" + Math.round(n).toLocaleString("it-IT");
+  const regioni = Object.keys(S.ADDIZIONALE_REGIONALE).sort();
+
+  ["a","b"].forEach((p, i) => {
+    const sel = document.getElementById(p + "-regione");
+    regioni.forEach(r => {
+      const o = document.createElement("option"); o.value=r; o.textContent=r;
+      if ((i === 0 && r === "Lombardia") || (i === 1 && r === "Lombardia")) o.selected = true;
+      sel.appendChild(o);
+    });
+  });
+
+  const stateA = { ral: 35000, regione: "Lombardia", tipoContratto: "dipendente", mensilita: 13, bonus: 0 };
+  const stateB = { ral: 42000, regione: "Lombardia", tipoContratto: "dipendente", mensilita: 13, bonus: 0 };
+
+  function update() {
+    const a = S.calcSalary(stateA), b = S.calcSalary(stateB);
+    document.getElementById("a-display").textContent = fmt(stateA.ral);
+    document.getElementById("b-display").textContent = fmt(stateB.ral);
+    document.getElementById("a-mese").textContent = fmt(a.nettoMensile);
+    document.getElementById("b-mese").textContent = fmt(b.nettoMensile);
+    document.getElementById("a-anno").textContent = fmt(a.nettoAnnuo);
+    document.getElementById("b-anno").textContent = fmt(b.nettoAnnuo);
+    document.getElementById("a-lordo").textContent = fmt(a.lordo);
+    document.getElementById("b-lordo").textContent = fmt(b.lordo);
+    document.getElementById("a-inps").textContent = "−" + fmt(a.inpsLavoratore);
+    document.getElementById("b-inps").textContent = "−" + fmt(b.inpsLavoratore);
+    document.getElementById("a-irpef").textContent = "−" + fmt(a.irpefNetta);
+    document.getElementById("b-irpef").textContent = "−" + fmt(b.irpefNetta);
+    document.getElementById("a-add").textContent = "−" + fmt(a.addizionaleRegionale + a.addizionaleComunale);
+    document.getElementById("b-add").textContent = "−" + fmt(b.addizionaleRegionale + b.addizionaleComunale);
+
+    const diffMese = b.nettoMensile - a.nettoMensile;
+    const diffAnno = b.nettoAnnuo - a.nettoAnnuo;
+    const diffRal = stateB.ral - stateA.ral;
+    const winner = diffMese >= 0 ? "B" : "A";
+    const color = diffMese >= 0 ? "var(--green)" : "var(--accent)";
+    document.getElementById("diff-mese").textContent = (diffMese >= 0 ? "+" : "−") + fmt(Math.abs(diffMese));
+    document.getElementById("diff-mese").style.color = color;
+    document.getElementById("diff-label").textContent = `in più al mese con l'offerta ${winner}`;
+    document.getElementById("diff-anno").innerHTML = (diffAnno >= 0 ? "+" : "−") + fmt(Math.abs(diffAnno)) + " / anno · differenza RAL " + fmt(Math.abs(diffRal));
+
+    document.getElementById("a-ral").style.setProperty("--slider-pct", ((stateA.ral-10000)/140000*100) + "%");
+    document.getElementById("b-ral").style.setProperty("--slider-pct", ((stateB.ral-10000)/140000*100) + "%");
+  }
+
+  document.getElementById("a-ral").addEventListener("input", e => { stateA.ral = +e.target.value; update(); });
+  document.getElementById("b-ral").addEventListener("input", e => { stateB.ral = +e.target.value; update(); });
+  document.getElementById("a-regione").addEventListener("change", e => { stateA.regione = e.target.value; update(); });
+  document.getElementById("b-regione").addEventListener("change", e => { stateB.regione = e.target.value; update(); });
+  document.querySelectorAll("[data-target] button").forEach(b => {
+    b.addEventListener("click", () => {
+      const group = b.parentElement;
+      group.querySelectorAll("button").forEach(x => x.classList.remove("on"));
+      b.classList.add("on");
+      const target = group.dataset.target;
+      if (target === "a-m") stateA.mensilita = +b.dataset.m;
+      else stateB.mensilita = +b.dataset.m;
+      update();
+    });
+  });
+
+  update();
+})();
+</script>
+
+</body>
+</html>

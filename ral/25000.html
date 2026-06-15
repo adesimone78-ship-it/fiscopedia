@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>RAL €25.000: stipendio netto 2026 in tutte le regioni — StipendioNetto.it</title>
+<meta name="description" content="Con una RAL di €25.000 il netto mensile in Lombardia è circa €1415. Tabella completa per tutte le 20 regioni italiane, IRPEF 2026 e calcolo dettagliato." />
+<link rel="canonical" href="https://www.stipendionetto.it/ral/25000.html" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/styles.css" />
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://www.stipendionetto.it/"},
+    {"@type":"ListItem","position":2,"name":"RAL 25000","item":"https://www.stipendionetto.it/ral/25000.html"}
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="brand"><span class="brand-logo">S</span><span>StipendioNetto<span class="dot">.it</span></span></a>
+    <div class="nav-links">
+      <a class="nav-link active" href="../index.html">Calcolatore</a>
+      <a class="nav-link" href="../forfettario.html">Forfettario</a>
+      <a class="nav-link" href="../confronto.html">Confronto</a>
+      <a class="nav-link" href="../blog.html">Blog</a>
+      <a class="nav-cta" href="#tool">Calcola</a>
+    </div>
+    <button class="nav-mobile-toggle" aria-label="Menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+  </div>
+</nav>
+
+<div class="container"><div class="crumb"><a href="../index.html">Home</a><span class="sep">›</span><a href="../index.html#tool">Calcolatore</a><span class="sep">›</span>RAL €25.000</div></div>
+
+<header class="hero" style="padding:48px 0 24px">
+  <div class="hero-inner">
+    <span class="eyebrow">RAL €25.000 · IRPEF 2026</span>
+    <h1>Stipendio netto con RAL di <span class="accent">€25.000</span></h1>
+    <p class="lead">Quanto guadagna realmente al mese chi ha una retribuzione annua lorda di €25.000? Calcolo dettagliato, tabella regionale, costo azienda.</p>
+  </div>
+</header>
+
+<!-- HERO STAT -->
+<section style="padding:24px 0">
+  <div class="container-narrow">
+    <div class="result-hero" style="text-align:center;padding:32px">
+      <div class="label">Netto mensile medio (Lombardia, 13 mensilità)</div>
+      <div class="big" style="margin:8px 0">€1415</div>
+      <div class="sub">€18.390 netto annuo · aliquota effettiva 26,4%</div>
+    </div>
+  </div>
+</section>
+
+<!-- CALCOLATORE INTERATTIVO -->
+<section id="tool" class="section" style="padding-top:24px">
+  <div class="container">
+
+    <div class="calc">
+      <div class="calc-inputs">
+        <div class="calc-field">
+          <span class="calc-label">RAL — Retribuzione annua lorda</span>
+          <span id="ral-display" class="calc-value-display">€25.000</span>
+          <input id="ral" type="range" class="salary-slider" min="10000" max="150000" step="500" value="25000" />
+          <div class="slider-range"><span>€10.000</span><span>€150.000</span></div>
+        </div>
+        <div class="calc-field">
+          <span class="calc-label">Regione</span>
+          <select id="regione" class="calc-select"></select>
+        </div>
+        <div class="calc-field">
+          <span class="calc-label">Mensilità</span>
+          <div class="segmented" id="mensilita">
+            <button data-m="12">12</button>
+            <button class="on" data-m="13">13</button>
+            <button data-m="14">14</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="calc-results">
+        <div class="result-hero">
+          <div class="label">Stipendio netto mensile</div>
+          <div id="netto-mensile" class="big">€0</div>
+          <div class="sub"><span id="netto-annuo">€0</span> netto/anno · aliquota effettiva <span id="aliquota-eff">0%</span></div>
+        </div>
+
+        <div style="font-size:12px;color:var(--sub);text-transform:uppercase;letter-spacing:.1em;margin:18px 0 8px">Dettaglio fiscale</div>
+        <table class="breakdown">
+          <tbody>
+            <tr><td>RAL</td><td id="b-lordo">€0</td></tr>
+            <tr class="negative"><td>− INPS lavoratore (9,19%)</td><td id="b-inps">€0</td></tr>
+            <tr><td>= Imponibile IRPEF</td><td id="b-imp">€0</td></tr>
+            <tr class="negative"><td>− IRPEF netta</td><td id="b-irpef">€0</td></tr>
+            <tr class="negative"><td>− Addizionale regionale</td><td id="b-add">€0</td></tr>
+            <tr class="negative"><td>− Addizionale comunale (media)</td><td id="b-com">€0</td></tr>
+            <tr class="total"><td>= Netto annuo</td><td id="b-netto">€0</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="ad-wrap">
+      <div class="ad-label">Pubblicità</div>
+      <div class="ad-slot ad-leader">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="1025000" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <span>Spazio pubblicitario AdSense</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TABELLA REGIONI -->
+<section class="section" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="container-narrow">
+    <div class="section-head">
+      <span class="eyebrow">Tabella per regione</span>
+      <h2 style="margin-top:14px">RAL €25.000 netto in tutta Italia</h2>
+      <p>Confronto del netto annuo e mensile (13 mensilità) per ciascuna regione italiana. Calcolo aggiornato con le aliquote addizionali 2026.</p>
+    </div>
+
+    <div class="prose">
+      <table>
+        <thead><tr><th>Regione</th><th>Netto annuo</th><th>Netto mensile (÷13)</th></tr></thead>
+        <tbody><tr><td>Abruzzo</td><td>€18.390</td><td>€1415</td></tr><tr><td>Basilicata</td><td>€18.390</td><td>€1415</td></tr><tr><td>Calabria</td><td>€18.322</td><td>€1409</td></tr><tr><td>Campania</td><td>€18.322</td><td>€1409</td></tr><tr><td>Emilia-Romagna</td><td>€18.390</td><td>€1415</td></tr><tr><td>Friuli-Venezia Giulia</td><td>€18.503</td><td>€1423</td></tr><tr><td>Lazio</td><td>€18.118</td><td>€1394</td></tr><tr><td>Liguria</td><td>€18.390</td><td>€1415</td></tr><tr><td>Lombardia</td><td>€18.390</td><td>€1415</td></tr><tr><td>Marche</td><td>€18.390</td><td>€1415</td></tr><tr><td>Molise</td><td>€18.322</td><td>€1409</td></tr><tr><td>Piemonte</td><td>€18.299</td><td>€1408</td></tr><tr><td>Puglia</td><td>€18.390</td><td>€1415</td></tr><tr><td>Sardegna</td><td>€18.503</td><td>€1423</td></tr><tr><td>Sicilia</td><td>€18.390</td><td>€1415</td></tr><tr><td>Toscana</td><td>€18.390</td><td>€1415</td></tr><tr><td>Trentino-Alto Adige</td><td>€18.503</td><td>€1423</td></tr><tr><td>Umbria</td><td>€18.367</td><td>€1413</td></tr><tr><td>Valle d'Aosta</td><td>€18.503</td><td>€1423</td></tr><tr><td>Veneto</td><td>€18.503</td><td>€1423</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section">
+  <div class="container-narrow">
+    <div class="section-head">
+      <span class="eyebrow">Domande frequenti</span>
+      <h2 style="margin-top:14px">RAL €25.000: cose da sapere</h2>
+    </div>
+
+    <details class="faq-item" open>
+      <summary class="faq-q">Quanto si paga di tasse su una RAL di €25.000?
+        <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="faq-a">
+        Su una RAL di <strong>€25.000</strong> in Lombardia si pagano circa <strong>€2298</strong> di INPS, <strong>€3738</strong> di IRPEF netta, <strong>€393</strong> di addizionale regionale e <strong>€182</strong> di addizionale comunale, per un totale di <strong>€6610</strong>. Il netto annuo risulta di <strong>€18.390</strong>, pari a circa <strong>€1415</strong> al mese su 13 mensilità.
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">Quanto costa al datore di lavoro una RAL di €25.000?
+        <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="faq-a">
+        Il costo aziendale totale è di circa <strong>€33.735</strong>: la RAL (€25.000), più l'INPS datore al 28,03% (€7008), più il TFR accantonato al 6,91% (€1727). Quindi il <strong>cuneo fiscale</strong> totale (differenza tra costo azienda e netto in tasca) è di circa <strong>€15.345</strong>.
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">Conviene di più ricevere €25.000 come RAL o come bonus?
+        <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="faq-a">
+        Un bonus viene tassato come reddito ordinario quindi paghi le stesse aliquote IRPEF dello stipendio. Trattandosi di una RAL nel primo scaglione (23%), la tassazione è relativamente leggera.
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">Quanto TFR maturo in un anno con questa RAL?
+        <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="faq-a">
+        Con una RAL di €25.000 accantoni ogni anno circa <strong>€1727</strong> di TFR netto (RAL ÷ 13,5 al netto del contributo INPS 0,5%). Su una carriera di 30 anni, parliamo di un capitale lordo finale di circa <strong>€72.555</strong> tenendo conto della rivalutazione media annua.
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- NAVIGAZIONE TRA RAL ADIACENTI -->
+<section style="padding:24px 0 48px">
+  <div class="container-narrow">
+    <h3 style="font-size:14px;text-transform:uppercase;letter-spacing:.1em;color:var(--sub);margin-bottom:18px;font-family:var(--font-body);font-weight:600">Altre RAL</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <a href="20000.html" class="card card-hover" style="display:block;text-decoration:none"><div style="font-size:11px;color:var(--sub);text-transform:uppercase;letter-spacing:.08em">← RAL precedente</div><div style="font-family:var(--font-display);font-weight:700;font-size:18px;color:var(--text);margin-top:6px">€20.000</div></a>
+      <a href="28000.html" class="card card-hover" style="display:block;text-align:right;text-decoration:none"><div style="font-size:11px;color:var(--sub);text-transform:uppercase;letter-spacing:.08em">RAL successiva →</div><div style="font-family:var(--font-display);font-weight:700;font-size:18px;color:var(--text);margin-top:6px">€28.000</div></a>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:24px;justify-content:center">
+      <a href="20000.html" class="btn btn-secondary btn-sm">€20.000</a>
+      <span class="btn btn-primary btn-sm">€25.000</span>
+      <a href="28000.html" class="btn btn-secondary btn-sm">€28.000</a>
+      <a href="30000.html" class="btn btn-secondary btn-sm">€30.000</a>
+      <a href="35000.html" class="btn btn-secondary btn-sm">€35.000</a>
+      <a href="40000.html" class="btn btn-secondary btn-sm">€40.000</a>
+      <a href="50000.html" class="btn btn-secondary btn-sm">€50.000</a>
+      <a href="60000.html" class="btn btn-secondary btn-sm">€60.000</a>
+      <a href="75000.html" class="btn btn-secondary btn-sm">€75.000</a>
+      <a href="100000.html" class="btn btn-secondary btn-sm">€100.000</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-about"><a href="../index.html" class="brand"><span class="brand-logo">S</span><span>StipendioNetto<span class="dot">.it</span></span></a><p>Il calcolatore stipendio netto gratuito per il mercato italiano.</p></div>
+      <div><h4>Strumenti</h4><ul><li><a href="../index.html">Calcolatore</a></li><li><a href="../forfettario.html">Forfettario</a></li><li><a href="../confronto.html">Confronto stipendi</a></li><li><a href="../blog.html">Blog</a></li></ul></div>
+      <div><h4>Sito</h4><ul><li><a href="../chi-siamo.html">Chi siamo</a></li><li><a href="../contatti.html">Contatti</a></li></ul></div>
+      <div><h4>Legale</h4><ul><li><a href="../privacy.html">Privacy</a></li><li><a href="../cookie.html">Cookie</a></li><li><a href="../disclaimer.html">Disclaimer</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 StipendioNetto.it</span></div>
+  </div>
+</footer>
+
+<div id="cookie-banner" class="cookie-banner hidden">
+  <p>Questo sito utilizza cookie tecnici e, previo consenso, cookie di terze parti per personalizzare annunci. <a href="../cookie.html">Cookie Policy</a>.</p>
+  <div class="actions"><button class="btn btn-secondary btn-sm" data-cookie="reject">Rifiuta</button><button class="btn btn-primary btn-sm" data-cookie="accept">Accetta</button></div>
+</div>
+
+<script src="../assets/salary.js"></script>
+<script src="../assets/site.js"></script>
+<script>
+(() => {
+  const S = window.SalaryEngine;
+  const sel = document.getElementById("regione");
+  Object.keys(S.ADDIZIONALE_REGIONALE).sort().forEach(r => {
+    const o = document.createElement("option"); o.value = r; o.textContent = r;
+    if (r === "Lombardia") o.selected = true;
+    sel.appendChild(o);
+  });
+  const state = { ral: 25000, regione: "Lombardia", tipoContratto: "dipendente", mensilita: 13, bonus: 0 };
+  const fmt = n => "€" + Math.round(n).toLocaleString("it-IT");
+  function update() {
+    const r = S.calcSalary(state);
+    document.getElementById("ral-display").textContent = fmt(state.ral);
+    document.getElementById("netto-mensile").textContent = fmt(r.nettoMensile);
+    document.getElementById("netto-annuo").textContent = fmt(r.nettoAnnuo);
+    document.getElementById("aliquota-eff").textContent = S.formatPct(r.aliquotaEffettiva);
+    document.getElementById("b-lordo").textContent = fmt(r.lordo);
+    document.getElementById("b-inps").textContent = "−" + fmt(r.inpsLavoratore);
+    document.getElementById("b-imp").textContent = fmt(r.imponibileIrpef);
+    document.getElementById("b-irpef").textContent = "−" + fmt(r.irpefNetta);
+    document.getElementById("b-add").textContent = "−" + fmt(r.addizionaleRegionale);
+    document.getElementById("b-com").textContent = "−" + fmt(r.addizionaleComunale);
+    document.getElementById("b-netto").textContent = fmt(r.nettoAnnuo);
+    document.getElementById("ral").style.setProperty("--slider-pct", ((state.ral-10000)/140000*100) + "%");
+  }
+  document.getElementById("ral").addEventListener("input", e => { state.ral = +e.target.value; update(); });
+  document.getElementById("regione").addEventListener("change", e => { state.regione = e.target.value; update(); });
+  document.querySelectorAll("#mensilita button").forEach(b => {
+    b.addEventListener("click", () => {
+      document.querySelectorAll("#mensilita button").forEach(x => x.classList.remove("on"));
+      b.classList.add("on"); state.mensilita = +b.dataset.m; update();
+    });
+  });
+  update();
+})();
+</script>
+
+</body>
+</html>

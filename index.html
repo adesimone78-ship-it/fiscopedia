@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Calcolatore Stipendio Netto 2026 — RAL → Netto · StipendioNetto.it</title>
+<meta name="description" content="Calcola lo stipendio netto dalla RAL nel 2026: IRPEF, INPS, addizionale regionale e detrazioni. Gratuito, aggiornato, con dettaglio mensile e costo azienda." />
+<meta name="keywords" content="calcolatore stipendio netto, ral netto 2026, calcolo irpef, busta paga, stipendio netto mensile, calcolo inps" />
+<link rel="canonical" href="https://www.stipendionetto.it/" />
+<meta name="robots" content="index,follow" />
+<meta name="author" content="StipendioNetto.it" />
+
+<!-- OpenGraph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Calcolatore Stipendio Netto 2026 — StipendioNetto.it" />
+<meta property="og:description" content="Dalla RAL al netto in tasca: IRPEF 2026, INPS, addizionali e costo azienda. Tool gratuito aggiornato." />
+<meta property="og:url" content="https://www.stipendionetto.it/" />
+<meta property="og:locale" content="it_IT" />
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="assets/styles.css" />
+
+<!-- JSON-LD: Website + WebApplication -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "name": "StipendioNetto.it",
+      "url": "https://www.stipendionetto.it/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.stipendionetto.it/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "WebApplication",
+      "name": "Calcolatore Stipendio Netto 2026",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+    }
+  ]
+}
+</script>
+
+<!-- Google AdSense (caricato dopo consenso) -->
+</head>
+<body>
+
+<!-- ─── NAVBAR ─────────────────────────────────────────────────────── -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-logo">S</span>
+      <span>StipendioNetto<span class="dot">.it</span></span>
+    </a>
+    <div class="nav-links">
+      <a class="nav-link active" href="index.html">Calcolatore</a>
+      <a class="nav-link" href="forfettario.html">Forfettario</a>
+      <a class="nav-link" href="confronto.html">Confronto</a>
+      <a class="nav-link" href="blog.html">Blog</a>
+      <a class="nav-link" href="chi-siamo.html">Chi siamo</a>
+      <a class="nav-cta" href="#tool">Calcola ora</a>
+    </div>
+    <button class="nav-mobile-toggle" aria-label="Menu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- ─── HERO ───────────────────────────────────────────────────────── -->
+<header class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">Aggiornato anno fiscale 2026</span>
+    <h1>Quanto guadagni <span class="accent">davvero</span> al mese?</h1>
+    <p class="lead">Inserisci la tua RAL e scopri lo stipendio netto considerando IRPEF, INPS, addizionali regionali e detrazioni. Calcolo trasparente, dettaglio mensile, costo azienda incluso.</p>
+    <div class="hero-actions">
+      <a href="#tool" class="btn btn-primary">Calcola lo stipendio →</a>
+      <a href="forfettario.html" class="btn btn-secondary">Sei in P.IVA forfettaria?</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="v">100%</div><div class="l">Gratuito</div></div>
+      <div class="hero-stat"><div class="v">20</div><div class="l">Regioni italiane</div></div>
+      <div class="hero-stat"><div class="v">2026</div><div class="l">IRPEF aggiornata</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- ─── CALCOLATORE ────────────────────────────────────────────────── -->
+<section id="tool" class="section">
+  <div class="container">
+
+    <div class="calc">
+      <!-- INPUT -->
+      <div class="calc-inputs">
+
+        <div class="calc-field">
+          <span class="calc-label">RAL — Retribuzione annua lorda</span>
+          <span id="ral-display" class="calc-value-display">€35.000</span>
+          <input id="ral" type="range" class="salary-slider" min="10000" max="150000" step="500" value="35000" />
+          <div class="slider-range"><span>€10.000</span><span>€150.000</span></div>
+        </div>
+
+        <div class="calc-field">
+          <span class="calc-label">Bonus / Extra annui</span>
+          <span id="bonus-display" class="calc-value-display" style="font-size:18px">€0</span>
+          <input id="bonus" type="range" class="salary-slider" min="0" max="20000" step="500" value="0" />
+          <div class="slider-range"><span>€0</span><span>€20.000</span></div>
+        </div>
+
+        <div class="calc-field">
+          <span class="calc-label">Regione di residenza</span>
+          <select id="regione" class="calc-select"></select>
+        </div>
+
+        <div class="calc-field">
+          <span class="calc-label">Tipo di contratto</span>
+          <div class="segmented" id="tipo-contratto" role="tablist">
+            <button class="on" data-tipo="dipendente">Dipendente</button>
+            <button data-tipo="apprendista">Apprendista</button>
+          </div>
+        </div>
+
+        <div class="calc-field">
+          <span class="calc-label">Mensilità</span>
+          <div class="segmented" id="mensilita">
+            <button data-m="12">12</button>
+            <button class="on" data-m="13">13</button>
+            <button data-m="14">14</button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RESULTS -->
+      <div class="calc-results">
+
+        <div class="result-hero">
+          <div class="label">Stipendio netto mensile</div>
+          <div id="netto-mensile" class="big">€0</div>
+          <div class="sub"><span id="netto-annuo">€0</span> netto/anno · aliquota effettiva <span id="aliquota-eff">0%</span></div>
+        </div>
+
+        <div class="result-grid">
+          <div class="result-card">
+            <div class="l">Costo azienda</div>
+            <div id="costo-azienda" class="v">€0</div>
+          </div>
+          <div class="result-card">
+            <div class="l">TFR/anno</div>
+            <div id="tfr" class="v">€0</div>
+          </div>
+        </div>
+
+        <div style="font-size:12px;color:var(--sub);text-transform:uppercase;letter-spacing:.1em;margin:18px 0 8px">Dettaglio fiscale</div>
+        <table class="breakdown">
+          <tbody>
+            <tr><td>RAL + Bonus</td><td id="b-lordo">€0</td></tr>
+            <tr class="negative"><td>− INPS lavoratore (9,19%)</td><td id="b-inps">€0</td></tr>
+            <tr><td>= Imponibile IRPEF</td><td id="b-imp">€0</td></tr>
+            <tr class="negative"><td>− IRPEF netta</td><td id="b-irpef">€0</td></tr>
+            <tr class="negative"><td>− Addizionale regionale</td><td id="b-add">€0</td></tr>
+            <tr class="negative"><td>− Addizionale comunale (media)</td><td id="b-com">€0</td></tr>
+            <tr class="total"><td>= Netto annuo</td><td id="b-netto">€0</td></tr>
+          </tbody>
+        </table>
+
+        <div style="display:flex;gap:10px;margin-top:18px;flex-wrap:wrap">
+          <button id="btn-stampa" class="btn btn-secondary btn-sm">📄 Stampa busta paga</button>
+          <button id="btn-condividi" class="btn btn-ghost btn-sm">🔗 Copia link</button>
+        </div>
+
+        <p style="font-size:12px;color:var(--muted);margin-top:14px;line-height:1.6">
+          Calcolo indicativo basato sulle aliquote IRPEF e contributive vigenti per il 2026. Non include detrazioni familiari, fringe benefit o situazioni particolari. Per la busta paga ufficiale consulta CAF o consulente del lavoro. <a href="disclaimer.html" style="color:var(--accent)">Disclaimer →</a>
+        </p>
+
+      </div>
+    </div>
+
+    <!-- AdSense slot 1 — sotto il tool -->
+    <div class="ad-wrap">
+      <div class="ad-label">Pubblicità</div>
+      <div class="ad-slot ad-leader">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+             data-ad-slot="1234567890"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <span>Spazio pubblicitario AdSense (728×90)</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── FEATURES ───────────────────────────────────────────────────── -->
+<section class="section" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Come funziona</span>
+      <h2 style="margin-top:14px">Trasparenza totale sui tuoi calcoli</h2>
+      <p>Il motore di calcolo applica passo dopo passo le regole fiscali italiane. Vediamo come.</p>
+    </div>
+
+    <div class="grid-3">
+      <div class="feature">
+        <div class="icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </div>
+        <h3>RAL + bonus</h3>
+        <p>Partiamo dalla retribuzione annua lorda e da eventuali bonus per arrivare al lordo totale. Comprende mensilità aggiuntive (13ª e 14ª) se le hai.</p>
+      </div>
+
+      <div class="feature">
+        <div class="icon" style="background:var(--red-soft);color:var(--red)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </div>
+        <h3>− INPS lavoratore</h3>
+        <p>Sottraiamo i contributi previdenziali: il 9,19% per il dipendente, il 5,84% se sei apprendista nel regime agevolato. Il risultato è l'imponibile fiscale.</p>
+      </div>
+
+      <div class="feature">
+        <div class="icon" style="background:var(--amber-soft);color:var(--amber)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7v10l10 5 10-5V7L12 2z"/><polyline points="2 7 12 12 22 7"/><line x1="12" y1="22" x2="12" y2="12"/></svg>
+        </div>
+        <h3>− IRPEF a scaglioni</h3>
+        <p>Applichiamo gli scaglioni IRPEF 2026 (23%, 35%, 43%) e sottraiamo la detrazione per lavoro dipendente, che si riduce gradualmente con il reddito.</p>
+      </div>
+
+      <div class="feature">
+        <div class="icon" style="background:color-mix(in oklab, var(--purple) 10%, transparent);color:var(--purple)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <h3>− Addizionali locali</h3>
+        <p>Aggiungiamo l'addizionale regionale (dall'1,23% al 2,93% in base alla regione) e una stima dell'addizionale comunale media.</p>
+      </div>
+
+      <div class="feature">
+        <div class="icon" style="background:var(--green-soft);color:var(--green)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h3>= Netto in tasca</h3>
+        <p>Il risultato finale, suddiviso anche su base mensile in base al numero di mensilità che ricevi (12, 13 o 14).</p>
+      </div>
+
+      <div class="feature">
+        <div class="icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3zM3 9h18M9 3v18"/></svg>
+        </div>
+        <h3>Costo azienda + TFR</h3>
+        <p>Ti mostriamo anche quanto costi davvero al tuo datore (RAL + INPS datore al 28,03% + TFR al 6,91%), utile in fase di negoziazione.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ESEMPI RAL ─────────────────────────────────────────────────── -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Esempi rapidi</span>
+      <h2 style="margin-top:14px">Quanto si guadagna con una RAL di...</h2>
+      <p>Confronto rapido per le fasce di reddito più comuni. Dati riferiti a Lombardia, contratto dipendente su 13 mensilità.</p>
+    </div>
+
+    <div id="ral-examples" class="grid-3"></div>
+  </div>
+</section>
+
+<!-- AdSense slot 2 — middle of page -->
+<div class="container">
+  <div class="ad-wrap">
+    <div class="ad-label">Pubblicità</div>
+    <div class="ad-slot ad-rect">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+           data-ad-slot="2345678901"
+           data-ad-format="rectangle"></ins>
+      <span>Spazio pubblicitario AdSense (336×280)</span>
+    </div>
+  </div>
+</div>
+
+<!-- ─── FAQ ────────────────────────────────────────────────────────── -->
+<section class="section" style="background:var(--surface);border-top:1px solid var(--border)">
+  <div class="container-narrow">
+    <div class="section-head">
+      <span class="eyebrow">Domande frequenti</span>
+      <h2 style="margin-top:14px">Cose che ti starai chiedendo</h2>
+    </div>
+
+    <details class="faq-item" open>
+      <summary class="faq-q">
+        Cos'è la RAL e in cosa differisce dallo stipendio netto?
+        <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="faq-a">
+        La <strong>RAL (Retribuzione Annua Lorda)</strong> è la somma di tutte le mensilità lorde percepite in un anno, incluse 13ª e 14ª se previste. Lo <strong>stipendio netto</strong> è invece quanto ti viene effettivamente accreditato in busta paga, dopo aver tolto contributi INPS, IRPEF e addizionali. La differenza in Italia è in media tra il 28% e il 40% a seconda del reddito.
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">
+        Quanto si paga di IRPEF nel 2026?
+        <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="faq-a">
+        Gli scaglioni IRPEF 2026 sono tre: <strong>23%</strong> fino a 28.000€, <strong>35%</strong> tra 28.001€ e 50.000€, <strong>43%</strong> oltre i 50.000€. A questi si aggiungono le addizionali regionali e comunali. Esiste poi una <strong>detrazione per lavoro dipendente</strong> che si applica in modo decrescente al crescere del reddito.
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">
+        I contributi INPS valgono per la pensione?
+        <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="faq-a">
+        Sì. Il 9,19% di INPS che vedi sottratto dalla busta paga è destinato alla tua pensione futura. A questo si aggiunge il 23,81% versato dal datore di lavoro, per un totale del <strong>33%</strong> circa di contribuzione pensionistica.
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">
+        Quanto cambia il netto tra una regione e l'altra?
+        <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="faq-a">
+        L'<strong>addizionale regionale IRPEF</strong> va dall'1,23% (Valle d'Aosta, Veneto, Sardegna) al 2,93% (Lazio). Su una RAL di 35.000€ la differenza tra la regione più "leggera" e quella più "pesante" è di circa <strong>520€ all'anno</strong> di netto.
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">
+        Conviene chiedere un aumento di RAL o un bonus una tantum?
+        <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="faq-a">
+        Dipende dallo scaglione in cui ti trovi. Un bonus una tantum viene tassato come reddito ordinario, quindi se sposti il tuo reddito sopra i 28.000€ entri nello scaglione al 35%. In generale, sopra i 50.000€ ogni euro lordo aggiuntivo ti porta circa <strong>50 centesimi netti</strong>. Sotto i 28.000€, invece, ne porta circa 65.
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">
+        Il calcolo è affidabile per la mia busta paga reale?
+        <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="faq-a">
+        Il nostro calcolo è preciso al <strong>97-98%</strong> per situazioni standard (lavoratore dipendente, nessun figlio a carico, nessun fringe benefit speciale). Per casi specifici — detrazioni familiari, welfare aziendale, regimi convenzionati, smartworking estero — consigliamo sempre di consultare un commercialista o un CAF.
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ─── BLOG TEASER ────────────────────────────────────────────────── -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Approfondisci</span>
+      <h2 style="margin-top:14px">Guide e articoli</h2>
+      <p>Tutto quello che devi sapere sulla tua busta paga, le tasse e il lavoro in Italia.</p>
+    </div>
+
+    <div class="grid-3">
+      <a href="blog/come-calcolare-stipendio-netto.html" class="blog-card">
+        <div class="meta"><span class="tag">Stipendi</span><span>8 min</span></div>
+        <h3>Come calcolare lo stipendio netto dalla RAL nel 2026</h3>
+        <p>Guida completa al calcolo del netto: scaglioni IRPEF, contributi INPS, detrazioni e addizionali. Con esempi pratici.</p>
+        <span class="read-more">Leggi articolo →</span>
+      </a>
+
+      <a href="blog/irpef-2026.html" class="blog-card">
+        <div class="meta"><span class="tag tag-red">Tasse</span><span>6 min</span></div>
+        <h3>IRPEF 2026: scaglioni, aliquote e detrazioni</h3>
+        <p>I nuovi scaglioni IRPEF, chi paga di più e chi risparmia, come cambia la detrazione per reddito da lavoro.</p>
+        <span class="read-more">Leggi articolo →</span>
+      </a>
+
+      <a href="blog/forfettario-vs-dipendente.html" class="blog-card">
+        <div class="meta"><span class="tag tag-amber">Partita IVA</span><span>12 min</span></div>
+        <h3>Forfettario vs dipendente: cosa conviene davvero?</h3>
+        <p>Confronto tra regime forfettario e lavoro dipendente. Quando conviene la P.IVA, cosa perdi e come calcolare il break-even.</p>
+        <span class="read-more">Leggi articolo →</span>
+      </a>
+    </div>
+
+    <div style="text-align:center;margin-top:32px">
+      <a href="blog.html" class="btn btn-secondary">Tutti gli articoli →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PROFESSIONI ────────────────────────────────────────────────── -->
+<section class="section" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Per professione</span>
+      <h2 style="margin-top:14px">Stipendio per categoria professionale</h2>
+      <p>Scopri quanto guadagna in media chi fa il tuo lavoro, con fasce salariali per esperienza.</p>
+    </div>
+
+    <div class="grid-3">
+      <a href="professioni/insegnante.html" class="card card-hover" style="text-decoration:none">
+        <span class="tag tag-green">Scuola</span>
+        <h3 style="font-size:18px;margin:12px 0 6px">Insegnante</h3>
+        <p style="color:var(--sub);font-size:14px;margin-bottom:14px">RAL media €28.000 · netto ~€1.700/mese</p>
+        <span style="color:var(--accent);font-weight:600;font-size:13px">Scopri di più →</span>
+      </a>
+      <a href="professioni/ingegnere.html" class="card card-hover" style="text-decoration:none">
+        <span class="tag tag-purple">Tech</span>
+        <h3 style="font-size:18px;margin:12px 0 6px">Ingegnere</h3>
+        <p style="color:var(--sub);font-size:14px;margin-bottom:14px">RAL media €45.000 · netto ~€2.350/mese</p>
+        <span style="color:var(--accent);font-weight:600;font-size:13px">Scopri di più →</span>
+      </a>
+      <a href="professioni/medico.html" class="card card-hover" style="text-decoration:none">
+        <span class="tag tag-red">Sanità</span>
+        <h3 style="font-size:18px;margin:12px 0 6px">Medico</h3>
+        <p style="color:var(--sub);font-size:14px;margin-bottom:14px">RAL media €52.000 · netto ~€2.580/mese</p>
+        <span style="color:var(--accent);font-weight:600;font-size:13px">Scopri di più →</span>
+      </a>
+      <a href="professioni/infermiere.html" class="card card-hover" style="text-decoration:none">
+        <span class="tag tag-green">Sanità</span>
+        <h3 style="font-size:18px;margin:12px 0 6px">Infermiere</h3>
+        <p style="color:var(--sub);font-size:14px;margin-bottom:14px">RAL media €27.000 · netto ~€1.640/mese</p>
+        <span style="color:var(--accent);font-weight:600;font-size:13px">Scopri di più →</span>
+      </a>
+      <a href="professioni/programmatore.html" class="card card-hover" style="text-decoration:none">
+        <span class="tag tag-purple">Tech</span>
+        <h3 style="font-size:18px;margin:12px 0 6px">Programmatore</h3>
+        <p style="color:var(--sub);font-size:14px;margin-bottom:14px">RAL media €42.000 · netto ~€2.220/mese</p>
+        <span style="color:var(--accent);font-weight:600;font-size:13px">Scopri di più →</span>
+      </a>
+      <a href="confronto.html" class="card card-hover" style="text-decoration:none;background:linear-gradient(135deg, var(--accent-soft), color-mix(in oklab, var(--green) 6%, var(--surface)));border-color:color-mix(in oklab, var(--accent) 22%, transparent)">
+        <span class="tag">Strumento</span>
+        <h3 style="font-size:18px;margin:12px 0 6px">Confronta due stipendi</h3>
+        <p style="color:var(--sub);font-size:14px;margin-bottom:14px">Differenza netta tra due RAL, anche su regioni diverse.</p>
+        <span style="color:var(--accent);font-weight:600;font-size:13px">Apri confronto →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── RAL ESPLORATIVE ────────────────────────────────────────────── -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Esplora per RAL</span>
+      <h2 style="margin-top:14px">Pagine dedicate alle RAL più comuni</h2>
+      <p>Pagine specifiche con tabella per tutte le 20 regioni italiane.</p>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center">
+      <a href="ral/20000.html" class="btn btn-secondary btn-sm">RAL €20.000</a>
+      <a href="ral/25000.html" class="btn btn-secondary btn-sm">RAL €25.000</a>
+      <a href="ral/28000.html" class="btn btn-secondary btn-sm">RAL €28.000</a>
+      <a href="ral/30000.html" class="btn btn-secondary btn-sm">RAL €30.000</a>
+      <a href="ral/35000.html" class="btn btn-secondary btn-sm">RAL €35.000</a>
+      <a href="ral/40000.html" class="btn btn-secondary btn-sm">RAL €40.000</a>
+      <a href="ral/50000.html" class="btn btn-secondary btn-sm">RAL €50.000</a>
+      <a href="ral/60000.html" class="btn btn-secondary btn-sm">RAL €60.000</a>
+      <a href="ral/75000.html" class="btn btn-secondary btn-sm">RAL €75.000</a>
+      <a href="ral/100000.html" class="btn btn-secondary btn-sm">RAL €100.000</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─────────────────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <a href="index.html" class="brand">
+          <span class="brand-logo">S</span>
+          <span>StipendioNetto<span class="dot">.it</span></span>
+        </a>
+        <p>Il calcolatore stipendio netto gratuito per il mercato italiano. Aggiornato all'anno fiscale 2026, indipendente, senza registrazione.</p>
+      </div>
+      <div>
+        <h4>Strumenti</h4>
+        <ul>
+          <li><a href="index.html">Calcolatore RAL→Netto</a></li>
+          <li><a href="forfettario.html">Forfettario P.IVA</a></li>
+          <li><a href="confronto.html">Confronto stipendi</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Sito</h4>
+        <ul>
+          <li><a href="chi-siamo.html">Chi siamo</a></li>
+          <li><a href="contatti.html">Contatti</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legale</h4>
+        <ul>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="cookie.html">Cookie Policy</a></li>
+          <li><a href="disclaimer.html">Disclaimer</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 StipendioNetto.it · Tutti i diritti riservati</span>
+      <span>I calcoli sono indicativi e non sostituiscono il parere di un consulente fiscale.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ─── COOKIE BANNER ──────────────────────────────────────────────── -->
+<div id="cookie-banner" class="cookie-banner hidden">
+  <p>
+    Questo sito utilizza cookie tecnici e, previo consenso, cookie di terze parti per personalizzare annunci pubblicitari (Google AdSense) e analizzare il traffico (Google Analytics). Maggiori informazioni nella <a href="cookie.html">Cookie Policy</a>.
+  </p>
+  <div class="actions">
+    <button class="btn btn-secondary btn-sm" data-cookie="reject">Rifiuta</button>
+    <button class="btn btn-primary btn-sm" data-cookie="accept">Accetta</button>
+  </div>
+</div>
+
+<script src="assets/salary.js"></script>
+<script src="assets/site.js"></script>
+<script>
+(() => {
+  const S = window.SalaryEngine;
+
+  // Popola select regioni
+  const sel = document.getElementById("regione");
+  const regioni = Object.keys(S.ADDIZIONALE_REGIONALE).sort();
+  regioni.forEach(r => {
+    const opt = document.createElement("option");
+    opt.value = r; opt.textContent = r;
+    if (r === "Lombardia") opt.selected = true;
+    sel.appendChild(opt);
+  });
+
+  // Stato
+  const state = { ral: 35000, bonus: 0, regione: "Lombardia", tipoContratto: "dipendente", mensilita: 13 };
+
+  // Format numero
+  const fmt = n => "€" + (Math.round(n).toLocaleString("it-IT"));
+
+  // Update UI
+  function update() {
+    const r = S.calcSalary(state);
+    document.getElementById("ral-display").textContent = fmt(state.ral);
+    document.getElementById("bonus-display").textContent = fmt(state.bonus);
+    document.getElementById("netto-mensile").textContent = fmt(r.nettoMensile);
+    document.getElementById("netto-annuo").textContent = fmt(r.nettoAnnuo);
+    document.getElementById("aliquota-eff").textContent = S.formatPct(r.aliquotaEffettiva);
+    document.getElementById("costo-azienda").textContent = fmt(r.costoAzienda);
+    document.getElementById("tfr").textContent = fmt(r.tfr);
+    document.getElementById("b-lordo").textContent = fmt(r.lordo);
+    document.getElementById("b-inps").textContent = "−" + fmt(r.inpsLavoratore);
+    document.getElementById("b-imp").textContent = fmt(r.imponibileIrpef);
+    document.getElementById("b-irpef").textContent = "−" + fmt(r.irpefNetta);
+    document.getElementById("b-add").textContent = "−" + fmt(r.addizionaleRegionale);
+    document.getElementById("b-com").textContent = "−" + fmt(r.addizionaleComunale);
+    document.getElementById("b-netto").textContent = fmt(r.nettoAnnuo);
+
+    // Slider gradient
+    const ralEl = document.getElementById("ral");
+    const bonusEl = document.getElementById("bonus");
+    ralEl.style.setProperty("--slider-pct", ((state.ral - 10000) / 140000 * 100) + "%");
+    bonusEl.style.setProperty("--slider-pct", ((state.bonus) / 20000 * 100) + "%");
+  }
+
+  // Listeners
+  document.getElementById("ral").addEventListener("input", e => { state.ral = +e.target.value; update(); });
+  document.getElementById("bonus").addEventListener("input", e => { state.bonus = +e.target.value; update(); });
+  document.getElementById("regione").addEventListener("change", e => { state.regione = e.target.value; update(); });
+  document.querySelectorAll("#tipo-contratto button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll("#tipo-contratto button").forEach(b => b.classList.remove("on"));
+      btn.classList.add("on");
+      state.tipoContratto = btn.dataset.tipo;
+      update();
+    });
+  });
+  document.querySelectorAll("#mensilita button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll("#mensilita button").forEach(b => b.classList.remove("on"));
+      btn.classList.add("on");
+      state.mensilita = +btn.dataset.m;
+      update();
+    });
+  });
+
+  // Esempi RAL
+  const esempi = [20000, 25000, 30000, 35000, 45000, 60000];
+  const grid = document.getElementById("ral-examples");
+  esempi.forEach(ral => {
+    const r = S.calcSalary({ ral, regione: "Lombardia", tipoContratto: "dipendente", mensilita: 13 });
+    const card = document.createElement("div");
+    card.className = "card card-hover";
+    card.innerHTML = `
+      <div style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--sub);font-weight:600">RAL ${fmt(ral)}</div>
+      <div style="font-family:var(--font-display);font-weight:800;font-size:30px;color:var(--accent);margin:6px 0 2px">${fmt(r.nettoMensile)}<span style="font-size:14px;color:var(--sub);font-weight:500"> /mese</span></div>
+      <div style="font-size:13px;color:var(--sub);margin-bottom:14px">${fmt(r.nettoAnnuo)} netto/anno</div>
+      <div style="font-size:13px;color:var(--sub);display:flex;justify-content:space-between;border-top:1px solid var(--border);padding-top:12px">
+        <span>Tasse + INPS</span><span style="color:var(--text);font-weight:500">${fmt(ral - r.nettoAnnuo)}</span>
+      </div>
+      <div style="font-size:13px;color:var(--sub);display:flex;justify-content:space-between;margin-top:6px">
+        <span>Aliquota effettiva</span><span style="color:var(--text);font-weight:500">${S.formatPct(r.aliquotaEffettiva)}</span>
+      </div>
+    `;
+    card.style.cursor = "pointer";
+    card.addEventListener("click", () => {
+      state.ral = ral; document.getElementById("ral").value = ral;
+      update();
+      document.getElementById("tool").scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+    grid.appendChild(card);
+  });
+
+  // Btn stampa
+  document.getElementById("btn-stampa").addEventListener("click", () => window.print());
+  document.getElementById("btn-condividi").addEventListener("click", async () => {
+    const url = `${location.origin}${location.pathname}?ral=${state.ral}&regione=${encodeURIComponent(state.regione)}`;
+    try {
+      await navigator.clipboard.writeText(url);
+      const b = document.getElementById("btn-condividi");
+      const t = b.textContent; b.textContent = "✓ Copiato!";
+      setTimeout(() => b.textContent = t, 1800);
+    } catch (e) { alert(url); }
+  });
+
+  // Query params (?ral=30000)
+  const qp = new URLSearchParams(location.search);
+  if (qp.get("ral")) { state.ral = +qp.get("ral"); document.getElementById("ral").value = state.ral; }
+  if (qp.get("regione")) {
+    const v = qp.get("regione");
+    if (regioni.includes(v)) { state.regione = v; sel.value = v; }
+  }
+
+  update();
+})();
+</script>
+
+</body>
+</html>
