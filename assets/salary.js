@@ -1,4 +1,4 @@
-/* ─── StipendioNetto.it — Engine fiscale 2026 ──────────────────────────
+/* ─── FiscoPedia.it — Engine fiscale 2026 ──────────────────────────
  *  Calcolo RAL → Netto secondo:
  *  · IRPEF 2026: scaglioni 23% / 35% / 43%
  *  · Detrazione lavoro dipendente: decrescente
@@ -16,32 +16,37 @@
   "use strict";
 
   // ─── Addizionale regionale (aliquote medie 2026, %) ──────────────────
+  // Fonte: delibere regionali vigenti 2026 (aggiornare ogni gennaio)
   const ADDIZIONALE_REGIONALE = {
-    "Abruzzo":              1.73,
-    "Basilicata":           1.73,
-    "Calabria":             2.03,
-    "Campania":             2.03,
-    "Emilia-Romagna":       1.73,
-    "Friuli-Venezia Giulia":1.23,
-    "Lazio":                2.93,
-    "Liguria":              1.73,
-    "Lombardia":            1.73,
-    "Marche":               1.73,
-    "Molise":               2.03,
-    "Piemonte":             2.13,
-    "Puglia":               1.73,
-    "Sardegna":             1.23,
-    "Sicilia":              1.73,
-    "Toscana":              1.73,
-    "Trentino-Alto Adige":  1.23,
-    "Umbria":               1.83,
-    "Valle d'Aosta":        1.23,
-    "Veneto":               1.23,
+    "Abruzzo":               1.73,
+    "Basilicata":            1.23,
+    "Calabria":              2.30,
+    "Campania":              2.20,
+    "Emilia-Romagna":        1.33,
+    "Friuli-Venezia Giulia": 1.23,
+    "Lazio":                 1.73,
+    "Liguria":               1.23,
+    "Lombardia":             1.23,
+    "Marche":                1.50,
+    "Molise":                2.16,
+    "Piemonte":              1.73,
+    "Puglia":                1.23,
+    "Sardegna":              1.23,
+    "Sicilia":               1.23,
+    "Toscana":               1.43,
+    "Trentino-Alto Adige":   1.23,
+    "Umbria":                1.53,
+    "Valle d'Aosta":         1.23,
+    "Veneto":                1.23,
   };
 
   // ─── Coefficienti redditività regime forfettario ─────────────────────
   const COEFF_FORFETTARI = {
     "Professionisti":              78,
+    "Informatica / IT":            78,
+    "Attività creative":           67,
+    "Salute / Benessere":          78,
+    "Istruzione / Formazione":     78,
     "Commercio al dettaglio":      40,
     "Commercio all'ingrosso":      40,
     "Artigiani e altre attività":  67,
@@ -109,9 +114,9 @@
     const nettoMensile = nettoAnnuo / mensilita;
 
     // Costi azienda
-    const aliquotaInpsDatore = tipo === "apprendista" ? 0.115 : 0.2803;
+    const aliquotaInpsDatore = tipo === "apprendista" ? 0.115 : 0.2953;
     const inpsDatore = lordo * aliquotaInpsDatore;
-    const tfr = lordo * 0.0691;
+    const tfr = lordo / 13.5;  // formula legale: lordo / 13,5
     const costoAzienda = lordo + inpsDatore + tfr;
 
     const aliquotaEffettiva = lordo > 0 ? ((lordo - nettoAnnuo) / lordo) : 0;

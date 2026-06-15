@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
-Sitemap: https://www.stipendionetto.it/sitemap.xml
+Sitemap: https://www.fiscoPedia.it/sitemap.xml

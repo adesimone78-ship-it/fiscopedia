@@ -11,14 +11,14 @@ document.addEventListener("DOMContentLoaded", () => {
   // Cookie banner
   const banner = document.getElementById("cookie-banner");
   if (banner) {
-    if (localStorage.getItem("sn_cookie_choice")) {
+    if (localStorage.getItem("fp_cookie_choice")) {
       banner.classList.add("hidden");
     } else {
       banner.classList.remove("hidden");
     }
     banner.querySelectorAll("[data-cookie]").forEach(btn => {
       btn.addEventListener("click", () => {
-        localStorage.setItem("sn_cookie_choice", btn.dataset.cookie);
+        localStorage.setItem("fp_cookie_choice", btn.dataset.cookie);
         banner.classList.add("hidden");
         // Caricamento AdSense solo dopo consenso "accept"
         if (btn.dataset.cookie === "accept") {
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
     // Se già accettato, carica adsense
-    if (localStorage.getItem("sn_cookie_choice") === "accept") loadAdSense();
+    if (localStorage.getItem("fp_cookie_choice") === "accept") loadAdSense();
   }
 });
 
