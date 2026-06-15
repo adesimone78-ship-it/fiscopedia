@@ -32,14 +32,14 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function loadAdSense() {
-  // In produzione: sostituire ca-pub-XXXXXXXXXXXXXXXX con il proprio Publisher ID
+  // In produzione: sostituire ca-pub-1145255592067202 con il proprio Publisher ID
   if (document.getElementById("adsense-script")) return;
   const s = document.createElement("script");
   s.id = "adsense-script";
   s.async = true;
   s.crossOrigin = "anonymous";
-  s.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX";
-  // s.setAttribute("data-ad-client", "ca-pub-XXXXXXXXXXXXXXXX");
+  s.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1145255592067202";
+  // s.setAttribute("data-ad-client", "ca-pub-1145255592067202");
   document.head.appendChild(s);
   // Inietta gli ads
   document.querySelectorAll(".ad-slot ins.adsbygoogle").forEach(() => {
