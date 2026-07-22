@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- build: 2026-07-22-r8 spaziatura-uniforme -->
 <html lang="it">
 <head>
   <meta charset="UTF-8" />
@@ -12,6 +13,9 @@
   <meta property="og:url" content="https://fiscopedia.it/blog/irpef-2026.html" />
   <meta property="og:type" content="article" />
   <meta property="og:locale" content="it_IT" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../assets/styles.css" />
   <script type="application/ld+json">
   {
@@ -26,19 +30,46 @@
     "url": "https://fiscopedia.it/blog/irpef-2026.html"
   }
   </script>
+  <style>
+    /* Spaziatura tipografica articolo — uniforme su tutte le guide */
+    main article { font-size: 1.05rem; line-height: 1.75; }
+    main article h2 {
+      font-size: 1.6rem;
+      line-height: 1.25;
+      margin: 2.75rem 0 1rem;
+      padding-top: .5rem;
+    }
+    main article h2:first-child { margin-top: 1rem; }
+    main article h3 {
+      font-size: 1.2rem;
+      line-height: 1.3;
+      margin: 2rem 0 .6rem;
+    }
+    main article p { margin: 0 0 1.15rem; }
+    main article ul, main article ol { margin: 0 0 1.5rem 1.4rem; }
+    main article li { margin-bottom: .55rem; }
+    main article table { margin: 1.75rem 0 2rem; }
+    main article blockquote { margin: 1.75rem 0; }
+    main article details { margin-bottom: .85rem; }
+    main article h2 + p, main article h2 + ul, main article h2 + table { margin-top: 0; }
+  </style>
 </head>
 <body>
 
 <nav class="nav">
-  <a class="nav-brand" href="https://fiscopedia.it/index.html"><span class="nav-logo">F</span>FiscoPedia.it</a>
-  <ul class="nav-links">
-    <li><a href="https://fiscopedia.it/index.html">Calcolatore</a></li>
-    <li><a href="https://fiscopedia.it/forfettario.html">Forfettario</a></li>
-    <li><a href="https://fiscopedia.it/confronto.html">Confronto</a></li>
-    <li><a href="https://fiscopedia.it/blog.html">Guide</a></li>
-    <li><a href="https://fiscopedia.it/chi-siamo.html">Chi siamo</a></li>
-  </ul>
-  <a class="btn btn-primary" href="https://fiscopedia.it/index.html#tool">Calcola ora</a>
+  <div class="nav-inner">
+    <a href="../index.html" class="brand"><span class="brand-logo">F</span><span>FiscoPedia<span class="dot">.it</span></span></a>
+    <div class="nav-links">
+      <a class="nav-link" href="../index.html">Calcolatore</a>
+      <a class="nav-link" href="../forfettario.html">Forfettario</a>
+      <a class="nav-link active" href="../blog.html">Guide</a>
+      <a class="nav-link" href="../chi-siamo.html">Chi siamo</a>
+      <a class="nav-cta" href="../index.html#tool">Calcola ora</a>
+    </div>
+    <button class="nav-mobile-toggle" aria-label="Menu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
 </nav>
 
 <main class="container" style="max-width:860px;margin:0 auto;padding:2rem 1rem;">
@@ -101,7 +132,7 @@
       </tr></thead>
       <tbody>
         <tr style="border-bottom:1px solid var(--border);"><td style="padding:.7rem 1rem;">Da 0 a 28.000€</td><td style="padding:.7rem 1rem;text-align:center;"><strong>23%</strong></td><td style="padding:.7rem 1rem;text-align:right;">6.440€</td></tr>
-        <tr style="border-bottom:1px solid var(--border);"><td style="padding:.7rem 1rem;">Da 28.001€ a 50.000€</td><td style="padding:.7rem 1rem;text-align:center;"><strong>33%</strong></td><td style="padding:.7rem 1rem;text-align:right;">7.260€</td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:.7rem 1rem;">Da 28.001€ a 50.000€</td><td style="padding:.7rem 1rem;text-align:center;"><strong>35%</strong></td><td style="padding:.7rem 1rem;text-align:right;">7.700€</td></tr>
         <tr style="border-bottom:1px solid var(--border);"><td style="padding:.7rem 1rem;">Oltre 50.000€</td><td style="padding:.7rem 1rem;text-align:center;"><strong>43%</strong></td><td style="padding:.7rem 1rem;text-align:right;">Illimitata</td></tr>
       </tbody>
     </table>
@@ -252,7 +283,7 @@
 
     <details style="border:1px solid var(--border);border-radius:.75rem;padding:1rem;margin-bottom:1rem;">
       <summary style="cursor:pointer;font-weight:600;">Qual è l'aliquota IRPEF per 30.000€ di reddito?</summary>
-      <p style="margin-top:.75rem;">Con un imponibile di 30.000€ l'aliquota marginale è il 33% (sei nel secondo scaglione), ma l'aliquota media effettiva è circa il 20%. Pagherai circa 6.440€ sui primi 28.000€ + 700€ sui restanti 2.000€ = ~7.140€ di IRPEF lorda, ridotta dalla detrazione per lavoro dipendente a circa 5.800–6.000€ netti.</p>
+      <p style="margin-top:.75rem;">Con un imponibile di 30.000€ l'aliquota marginale è il 35% (sei nel secondo scaglione), ma l'aliquota media effettiva è circa il 20%. Pagherai circa 6.440€ sui primi 28.000€ + 700€ sui restanti 2.000€ = ~7.140€ di IRPEF lorda, ridotta dalla detrazione per lavoro dipendente a circa 5.800–6.000€ netti.</p>
     </details>
 
     <details style="border:1px solid var(--border);border-radius:.75rem;padding:1rem;margin-bottom:1rem;">
@@ -272,7 +303,7 @@
 
     <details style="border:1px solid var(--border);border-radius:.75rem;padding:1rem;margin-bottom:1rem;">
       <summary style="cursor:pointer;font-weight:600;">Conviene versare al fondo pensione per risparmiare sull'IRPEF?</summary>
-      <p style="margin-top:.75rem;">Sì, è una delle strategie più efficaci. I contributi versati a fondi pensione complementari sono deducibili dal reddito imponibile fino a 5.164,57€/anno. Se sei nello scaglione al 33%, ogni euro versato al fondo pensione ti fa risparmiare 35 centesimi di IRPEF. In pratica lo Stato "cofinanzia" il tuo fondo pensione.</p>
+      <p style="margin-top:.75rem;">Sì, è una delle strategie più efficaci. I contributi versati a fondi pensione complementari sono deducibili dal reddito imponibile fino a 5.164,57€/anno. Se sei nello scaglione al 35%, ogni euro versato al fondo pensione ti fa risparmiare 35 centesimi di IRPEF. In pratica lo Stato "cofinanzia" il tuo fondo pensione.</p>
     </details>
 
     <div style="background:linear-gradient(135deg,var(--accent),#818cf8);border-radius:1rem;padding:2rem;color:#fff;margin:2.5rem 0;">
