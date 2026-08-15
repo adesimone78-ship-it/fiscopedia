@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Calcolatore Pensione 2026 — Sistema Contributivo INPS · FiscoPedia.it</title>
+<meta name="description" content="Calcola una stima della tua pensione futura: pensione anticipata, Quota 103 e pensione di vecchiaia. Sistema contributivo INPS, coefficienti aggiornati 2025-2026." />
+<link rel="canonical" href="https://www.fiscoPedia.it/calcolatore-pensione.html" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-logo">F</span>
+      <span>FiscoPedia<span class="dot">.it</span></span>
+    </a>
+    <div class="nav-links">
+      <a class="nav-link" href="index.html">Calcolatore</a>
+      <a class="nav-link" href="forfettario.html">Forfettario</a>
+      <a class="nav-link active" href="calcolatore-pensione.html">Pensione</a>
+      <a class="nav-link" href="calcolatore-tfr.html">TFR</a>
+      <a class="nav-link" href="blog.html">Guide</a>
+      <a class="nav-link" href="chi-siamo.html">Chi siamo</a>
+      <a class="nav-cta" href="#tool">Calcola ora</a>
+    </div>
+    <button class="nav-mobile-toggle" aria-label="Menu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<div class="container"><div class="crumb"><a href="index.html">Home</a><span class="sep">›</span>Pensione</div></div>
+
+<header class="hero" style="padding-bottom:24px">
+  <div class="hero-inner">
+    <span class="eyebrow">Previdenza · Pensione 2026</span>
+    <h1>Quanto <span class="accent">prenderai di pensione</span>?</h1>
+    <p class="lead">Stima la tua pensione futura con il sistema contributivo INPS. Confronto tra pensione anticipata, Quota 103 e pensione di vecchiaia, con coefficienti aggiornati al biennio 2025-2026.</p>
+  </div>
+</header>
+
+<section id="tool" class="section" style="padding-top:24px">
+  <div class="container">
+
+    <div class="calc" style="grid-template-columns:380px 1fr">
+      <div class="calc-inputs">
+
+        <div class="calc-field">
+          <span class="calc-label">RAL — Retribuzione annua lorda attuale</span>
+          <span id="ral-display" class="calc-value-display">€30.000</span>
+          <input id="ral" type="range" class="salary-slider" min="15000" max="100000" step="500" value="30000" />
+          <div class="slider-range"><span>€15.000</span><span>€100.000</span></div>
+        </div>
+
+        <div class="calc-field">
+          <span class="calc-label">Età attuale</span>
+          <span id="eta-display" class="calc-value-display">35 anni</span>
+          <input id="eta" type="range" class="salary-slider" min="20" max="65" step="1" value="35" />
+          <div class="slider-range"><span>20</span><span>65</span></div>
+        </div>
+
+        <div class="calc-field">
+          <span class="calc-label">Anni di contributi già versati</span>
+          <span id="contributi-display" class="calc-value-display">10 anni</span>
+          <input id="contributi" type="range" class="salary-slider" min="0" max="45" step="1" value="10" />
+          <div class="slider-range"><span>0</span><span>45</span></div>
+        </div>
+
+        <div class="calc-field">
+          <span class="calc-label">Sesso <span style="opacity:.7;font-weight:400">(requisito diverso per l'anticipata)</span></span>
+          <div class="segmented" id="sesso">
+            <button class="on" data-s="M">Uomo</button>
+            <button data-s="F">Donna</button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="calc-results">
+
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px">
+
+          <div class="scenario-box" style="background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:16px">
+            <div style="font-size:10px;color:var(--sub);text-transform:uppercase;letter-spacing:.08em;font-weight:600">Anticipata</div>
+            <div id="ant-eta" style="font-family:var(--font-display);font-weight:800;font-size:20px;margin-top:6px">—</div>
+            <div id="ant-contrib" style="font-size:11px;color:var(--sub);margin-top:2px">—</div>
+            <div id="ant-pensione" style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--accent);margin-top:10px">—</div>
+            <div id="ant-mensile" style="font-size:11px;color:var(--sub)">—</div>
+          </div>
+
+          <div class="scenario-box" style="background:var(--accent-soft);border:1px solid color-mix(in oklab, var(--accent) 22%, transparent);border-radius:12px;padding:16px">
+            <div style="font-size:10px;color:var(--sub);text-transform:uppercase;letter-spacing:.08em;font-weight:600">Quota 103</div>
+            <div id="q103-eta" style="font-family:var(--font-display);font-weight:800;font-size:20px;margin-top:6px">—</div>
+            <div id="q103-contrib" style="font-size:11px;color:var(--sub);margin-top:2px">—</div>
+            <div id="q103-pensione" style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--accent);margin-top:10px">—</div>
+            <div id="q103-mensile" style="font-size:11px;color:var(--sub)">—</div>
+          </div>
+
+          <div class="scenario-box" style="background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:16px">
+            <div style="font-size:10px;color:var(--sub);text-transform:uppercase;letter-spacing:.08em;font-weight:600">Vecchiaia</div>
+            <div id="vecch-eta" style="font-family:var(--font-display);font-weight:800;font-size:20px;margin-top:6px">67 anni</div>
+            <div id="vecch-contrib" style="font-size:11px;color:var(--sub);margin-top:2px">—</div>
+            <div id="vecch-pensione" style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--accent);margin-top:10px">—</div>
+            <div id="vecch-mensile" style="font-size:11px;color:var(--sub)">—</div>
+          </div>
+
+        </div>
+
+        <div id="scenario-msg" style="margin-top:14px;text-align:center;padding:10px;border-radius:10px;font-size:13px;font-weight:500;background:var(--accent-soft);color:var(--accent)">—</div>
+
+        <div style="font-size:12px;color:var(--sub);text-transform:uppercase;letter-spacing:.1em;margin:20px 0 8px">Dettaglio scenario più vicino</div>
+        <table class="breakdown">
+          <tbody>
+            <tr><td>Montante contributivo stimato</td><td id="d-montante">€0</td></tr>
+            <tr><td>Coefficiente di trasformazione</td><td id="d-coeff">0%</td></tr>
+            <tr class="total"><td>= Pensione annua lorda</td><td id="d-pensione">€0</td></tr>
+          </tbody>
+        </table>
+
+        <p style="font-size:11px;color:var(--muted);margin-top:14px">Calcolo indicativo basato sul sistema contributivo INPS e sui coefficienti di trasformazione ufficiali per il biennio 2025-2026. Non tiene conto di periodi non continuativi, riscatti, ricongiunzioni o rivalutazione reale del montante. Per un calcolo ufficiale consulta il portale INPS o un patronato. <a href="disclaimer.html">Disclaimer →</a></p>
+
+      </div>
+    </div>
+
+    <!-- AdSense -->
+    <div class="ad-wrap">
+      <div class="ad-label">Pubblicità</div>
+      <div class="ad-slot ad-leader">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1145255592067202" data-ad-slot="3456789013" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <span>Spazio pubblicitario AdSense (728×90)</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── COSA SAPERE ─────────────────────────────────────────────────── -->
+<section class="section" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="container-narrow">
+    <div class="section-head">
+      <span class="eyebrow">Da sapere</span>
+      <h2 style="margin-top:14px">Come funziona la pensione contributiva</h2>
+    </div>
+
+    <div class="prose">
+      <p>Per chi ha iniziato a lavorare dopo il 1995 (o con carriere miste dopo le riforme), la pensione si calcola con il <strong>sistema contributivo</strong>: ogni anno una quota della RAL (il 33%, aliquota IVS) viene accantonata in un "montante" virtuale, che al pensionamento viene trasformato in una rendita annua.</p>
+
+      <h3>Il coefficiente di trasformazione</h3>
+      <p>Il montante non diventa pensione 1:1: viene moltiplicato per un <strong>coefficiente di trasformazione</strong> che dipende dall'età a cui si va in pensione. Più tardi si esce dal lavoro, più alto è il coefficiente. I coefficienti sono aggiornati ogni due anni sulla base della speranza di vita attesa: quelli in vigore dal 2025 sono leggermente più bassi rispetto al biennio precedente.</p>
+
+      <h3>Le tre vie per andare in pensione</h3>
+      <p><strong>Pensione anticipata</strong>: 42 anni e 10 mesi di contributi per gli uomini, 41 anni e 10 mesi per le donne, indipendentemente dall'età anagrafica — premia chi ha iniziato a lavorare molto giovane. <strong>Quota 103</strong>: 62 anni di età e 41 anni di contributi insieme — è un requisito ad esaurimento, rinnovato di anno in anno dalle leggi di bilancio. <strong>Pensione di vecchiaia</strong>: 67 anni di età e almeno 20 anni di contributi, il requisito "di base" raggiungibile da chiunque.</p>
+
+      <h3>Perché l'anticipata a volte arriva più tardi della vecchiaia</h3>
+      <p>Il requisito della pensione anticipata è basato solo sugli anni di contributi, non sull'età. Chi ha iniziato a lavorare tardi può raggiungere i 67 anni della vecchiaia prima di accumulare i 42 anni e 10 mesi richiesti dall'anticipata — in quel caso conviene la vecchiaia. Il calcolatore qui sopra mostra sempre tutti e tre gli scenari proprio per evidenziare quale arriva prima nel tuo caso.</p>
+
+      <blockquote>
+        ⚠️ Attenzione: la data esatta di uscita non coincide sempre col compimento del requisito. Si applicano finestre di attesa (es. 3 mesi per l'anticipata) prima dell'erogazione del primo assegno. Il calcolo non tiene conto della rivalutazione reale del montante al tasso di capitalizzazione ufficiale (media quinquennale del PIL nominale): è una stima prudenziale, non un valore preciso.
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <a href="index.html" class="brand"><span class="brand-logo">F</span><span>FiscoPedia<span class="dot">.it</span></span></a>
+        <p>Il portale fiscale gratuito per il mercato italiano. Aggiornato all'anno fiscale 2026.</p>
+      </div>
+      <div><h4>Strumenti</h4><ul><li><a href="index.html">Calcolatore RAL→Netto</a></li><li><a href="forfettario.html">Forfettario P.IVA</a></li><li><a href="calcolatore-pensione.html">Calcolatore Pensione</a></li><li><a href="calcolatore-tfr.html">Calcolatore TFR</a></li><li><a href="blog.html">Blog</a></li></ul></div>
+      <div><h4>Sito</h4><ul><li><a href="chi-siamo.html">Chi siamo</a></li><li><a href="contatti.html">Contatti</a></li></ul></div>
+      <div><h4>Legale</h4><ul><li><a href="privacy.html">Privacy Policy</a></li><li><a href="cookie.html">Cookie Policy</a></li><li><a href="disclaimer.html">Disclaimer</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 FiscoPedia.it</span><span>I calcoli sono indicativi e non sostituiscono il parere di un consulente fiscale.</span></div>
+  </div>
+</footer>
+
+<div id="cookie-banner" class="cookie-banner hidden">
+  <p>Questo sito utilizza cookie tecnici e, previo consenso, cookie di terze parti per personalizzare annunci e analizzare il traffico. <a href="cookie.html">Cookie Policy</a>.</p>
+  <div class="actions">
+    <button class="btn btn-secondary btn-sm" data-cookie="reject">Rifiuta</button>
+    <button class="btn btn-primary btn-sm" data-cookie="accept">Accetta</button>
+  </div>
+</div>
+
+<script src="assets/pension.js"></script>
+<script src="assets/site.js"></script>
+<script>
+(() => {
+  const P = window.PensionCalc;
+  const state = { ral: 30000, eta: 35, contributi: 10, sesso: "M" };
+
+  const fmt = n => "€" + Math.round(n).toLocaleString("it-IT");
+  const fmt1 = n => (Math.round(n * 10) / 10).toLocaleString("it-IT");
+
+  function scriviScenario(prefix, s) {
+    const etaEl = document.getElementById(prefix + "-eta");
+    const contribEl = document.getElementById(prefix + "-contrib");
+    const pensEl = document.getElementById(prefix + "-pensione");
+    const mensEl = document.getElementById(prefix + "-mensile");
+
+    if (!s || !s.raggiungibile) {
+      if (prefix !== "vecch") etaEl.textContent = "Non raggiungibile";
+      contribEl.textContent = "con questi parametri";
+      pensEl.textContent = "—";
+      mensEl.textContent = "";
+      return null;
+    }
+    if (prefix !== "vecch") etaEl.textContent = fmt1(s.eta) + " anni";
+    contribEl.textContent = fmt1(s.anniContributi) + " anni di contributi";
+    pensEl.textContent = fmt(s.pensioneAnnuaLorda) + "/anno";
+    mensEl.textContent = fmt(s.pensioneMensileLorda) + "/mese (13 mens.)";
+    return s;
+  }
+
+  function update() {
+    document.getElementById("ral-display").textContent = fmt(state.ral);
+    document.getElementById("eta-display").textContent = state.eta + " anni";
+    document.getElementById("contributi-display").textContent = state.contributi + " anni";
+
+    const scenari = P.calcolaScenari({
+      ralAttuale: state.ral,
+      etaAttuale: state.eta,
+      anniContributiVersati: state.contributi,
+      sesso: state.sesso
+    });
+
+    const risAnt = scriviScenario("ant", scenari.anticipata);
+    const risQ103 = scriviScenario("q103", scenari.quota103);
+    const risVecch = scriviScenario("vecch", scenari.vecchiaia);
+
+    // Trova lo scenario raggiungibile più vicino nel tempo (età minore)
+    const candidati = [
+      { nome: "Pensione anticipata", dato: risAnt },
+      { nome: "Quota 103", dato: risQ103 },
+      { nome: "Pensione di vecchiaia", dato: risVecch }
+    ].filter(c => c.dato);
+
+    const msg = document.getElementById("scenario-msg");
+    if (candidati.length > 0) {
+      candidati.sort((a, b) => a.dato.eta - b.dato.eta);
+      const primo = candidati[0];
+      msg.textContent = `Nel tuo caso arrivi prima con: ${primo.nome} a ${fmt1(primo.dato.eta)} anni`;
+
+      document.getElementById("d-montante").textContent = fmt(primo.dato.montanteTotale);
+      document.getElementById("d-coeff").textContent = primo.dato.coefficiente.toFixed(2) + "%";
+      document.getElementById("d-pensione").textContent = fmt(primo.dato.pensioneAnnuaLorda);
+    } else {
+      msg.textContent = "Nessuno scenario raggiungibile con questi parametri";
+    }
+
+    ["ral", "eta", "contributi"].forEach(id => {
+      const el = document.getElementById(id);
+      const min = +el.min, max = +el.max;
+      el.style.setProperty("--slider-pct", ((el.value - min) / (max - min) * 100) + "%");
+    });
+  }
+
+  document.getElementById("ral").addEventListener("input", e => { state.ral = +e.target.value; update(); });
+  document.getElementById("eta").addEventListener("input", e => { state.eta = +e.target.value; update(); });
+  document.getElementById("contributi").addEventListener("input", e => { state.contributi = +e.target.value; update(); });
+  document.querySelectorAll("#sesso button").forEach(b => {
+    b.addEventListener("click", () => {
+      document.querySelectorAll("#sesso button").forEach(x => x.classList.remove("on"));
+      b.classList.add("on");
+      state.sesso = b.dataset.s;
+      update();
+    });
+  });
+
+  update();
+})();
+</script>
+
+</body>
+</html>

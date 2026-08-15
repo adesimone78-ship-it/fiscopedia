@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Calcolatore TFR 2026 — Quanto ti spetta di liquidazione · FiscoPedia.it</title>
+<meta name="description" content="Calcola il TFR maturato dalla tua RAL e dagli anni di servizio: accantonamento annuo, rivalutazione ISTAT e stima del netto dopo tassazione separata." />
+<link rel="canonical" href="https://www.fiscoPedia.it/calcolatore-tfr.html" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-logo">F</span>
+      <span>FiscoPedia<span class="dot">.it</span></span>
+    </a>
+    <div class="nav-links">
+      <a class="nav-link" href="index.html">Calcolatore</a>
+      <a class="nav-link" href="forfettario.html">Forfettario</a>
+      <a class="nav-link" href="calcolatore-pensione.html">Pensione</a>
+      <a class="nav-link active" href="calcolatore-tfr.html">TFR</a>
+      <a class="nav-link" href="blog.html">Guide</a>
+      <a class="nav-link" href="chi-siamo.html">Chi siamo</a>
+      <a class="nav-cta" href="#tool">Calcola ora</a>
+    </div>
+    <button class="nav-mobile-toggle" aria-label="Menu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<div class="container"><div class="crumb"><a href="index.html">Home</a><span class="sep">›</span>TFR</div></div>
+
+<header class="hero" style="padding-bottom:24px">
+  <div class="hero-inner">
+    <span class="eyebrow">Lavoro dipendente · TFR</span>
+    <h1>Quanto <span class="accent">TFR hai maturato</span>?</h1>
+    <p class="lead">Calcola il Trattamento di Fine Rapporto accumulato dalla tua RAL e dagli anni di servizio, con rivalutazione ISTAT e stima del netto dopo tassazione separata.</p>
+  </div>
+</header>
+
+<section id="tool" class="section" style="padding-top:24px">
+  <div class="container">
+
+    <div class="calc" style="grid-template-columns:380px 1fr">
+      <div class="calc-inputs">
+
+        <div class="calc-field">
+          <span class="calc-label">RAL — Retribuzione annua lorda attuale</span>
+          <span id="ral-display" class="calc-value-display">€30.000</span>
+          <input id="ral" type="range" class="salary-slider" min="15000" max="100000" step="500" value="30000" />
+          <div class="slider-range"><span>€15.000</span><span>€100.000</span></div>
+        </div>
+
+        <div class="calc-field">
+          <span class="calc-label">Anni di servizio (anzianità)</span>
+          <span id="anni-display" class="calc-value-display">8 anni</span>
+          <input id="anni" type="range" class="salary-slider" min="0.5" max="40" step="0.5" value="8" />
+          <div class="slider-range"><span>0,5</span><span>40</span></div>
+        </div>
+
+        <div class="calc-field">
+          <span class="calc-label">Inflazione media attesa</span>
+          <span id="infl-display" class="calc-value-display">2,0%</span>
+          <input id="inflazione" type="range" class="salary-slider" min="0" max="6" step="0.1" value="2" />
+          <div class="slider-range"><span>0%</span><span>6%</span></div>
+        </div>
+
+        <div class="calc-field">
+          <span class="calc-label">Crescita RAL attesa <span style="opacity:.7;font-weight:400">(opzionale)</span></span>
+          <span id="cresc-display" class="calc-value-display">0,0%</span>
+          <input id="crescita" type="range" class="salary-slider" min="0" max="5" step="0.1" value="0" />
+          <div class="slider-range"><span>0%</span><span>5%</span></div>
+        </div>
+
+      </div>
+
+      <div class="calc-results">
+
+        <div class="result-hero" style="background:linear-gradient(135deg, var(--accent-soft), color-mix(in oklab, var(--accent) 6%, var(--surface)));border-color:color-mix(in oklab, var(--accent) 22%, transparent)">
+          <div class="label">TFR lordo maturato</div>
+          <div id="tfr-lordo" class="big" style="color:var(--accent)">€0</div>
+          <div class="sub" id="tfr-sub">Aliquota media 0% · Rivalutazione 0%/anno</div>
+        </div>
+
+        <div style="font-size:12px;color:var(--sub);text-transform:uppercase;letter-spacing:.1em;margin:12px 0 8px">Dettaglio calcolo</div>
+        <table class="breakdown">
+          <tbody>
+            <tr><td>TFR lordo maturato</td><td id="d-lordo">€0</td></tr>
+            <tr class="negative"><td>− Ritenuta stimata (tassazione separata)</td><td id="d-ritenuta">€0</td></tr>
+            <tr class="total"><td>= TFR netto stimato</td><td id="d-netto">€0</td></tr>
+          </tbody>
+        </table>
+
+        <p style="font-size:11px;color:var(--muted);margin-top:14px">Accantonamento RAL/13,5 rivalutato annualmente a 1,5% fisso + 75% dell'inflazione inserita. La tassazione netta è stimata con un'aliquota media IRPEF approssimata sul reddito attuale — il calcolo ufficiale della tassazione separata si basa sul reddito di riferimento degli ultimi 5 anni ed è soggetto a riliquidazione da parte dell'Agenzia delle Entrate. Per l'importo esatto rivolgiti all'ufficio del personale o a un CAF. <a href="disclaimer.html">Disclaimer →</a></p>
+
+      </div>
+    </div>
+
+    <!-- AdSense -->
+    <div class="ad-wrap">
+      <div class="ad-label">Pubblicità</div>
+      <div class="ad-slot ad-leader">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1145255592067202" data-ad-slot="3456789014" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <span>Spazio pubblicitario AdSense (728×90)</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── COSA SAPERE ─────────────────────────────────────────────────── -->
+<section class="section" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="container-narrow">
+    <div class="section-head">
+      <span class="eyebrow">Da sapere</span>
+      <h2 style="margin-top:14px">Come funziona il calcolo del TFR</h2>
+    </div>
+
+    <div class="prose">
+      <p>Ogni anno il datore di lavoro accantona una quota di TFR pari alla <strong>retribuzione annua lorda diviso 13,5</strong>. Su una RAL di 30.000€, la quota annua è di circa 2.222€. Questa quota si aggiunge, anno dopo anno, al TFR già maturato negli anni precedenti.</p>
+
+      <h3>La rivalutazione ISTAT</h3>
+      <p>Il TFR accantonato negli anni precedenti (non quello dell'anno in corso) si rivaluta ogni 31 dicembre secondo una formula fissata per legge: <strong>1,5% fisso + il 75% dell'inflazione</strong> misurata dall'indice ISTAT FOI. Con un'inflazione del 2%, il tasso di rivalutazione applicato è quindi del 3% annuo.</p>
+
+      <h3>La tassazione separata</h3>
+      <p>Il TFR non viene tassato con gli scaglioni IRPEF ordinari — se così fosse, l'intero importo (spesso accumulato in 10-30 anni) farebbe schizzare il contribuente nello scaglione più alto per un solo anno. Si usa invece la <strong>tassazione separata</strong>: un'aliquota media basata sul reddito medio degli ultimi 5 anni di lavoro si applica all'intero TFR. Il nostro calcolatore approssima questa aliquota usando solo la RAL attuale — il valore reale può differire se il tuo reddito è cambiato molto negli ultimi anni.</p>
+
+      <h3>Anticipo e destinazione a fondo pensione</h3>
+      <p>Dopo almeno 8 anni presso lo stesso datore di lavoro è possibile chiedere un anticipo fino al 70% del TFR maturato per causali specifiche (spese sanitarie, prima casa). In alternativa, il TFR può essere destinato a un fondo pensione: rendimento meno prevedibile ma potenzialmente più alto nel lungo periodo, con vantaggi fiscali specifici — una scelta da valutare con attenzione perché in gran parte irreversibile.</p>
+
+      <blockquote>
+        ⚠️ L'importo definitivo del TFR netto viene comunicato con un conguaglio (di solito l'anno successivo) dall'Agenzia delle Entrate, che ricalcola l'aliquota media esatta sul reddito di riferimento reale. Può risultare in un piccolo rimborso o in un'ulteriore trattenuta rispetto all'anticipo versato dal datore di lavoro.
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <a href="index.html" class="brand"><span class="brand-logo">F</span><span>FiscoPedia<span class="dot">.it</span></span></a>
+        <p>Il portale fiscale gratuito per il mercato italiano. Aggiornato all'anno fiscale 2026.</p>
+      </div>
+      <div><h4>Strumenti</h4><ul><li><a href="index.html">Calcolatore RAL→Netto</a></li><li><a href="forfettario.html">Forfettario P.IVA</a></li><li><a href="calcolatore-pensione.html">Calcolatore Pensione</a></li><li><a href="calcolatore-tfr.html">Calcolatore TFR</a></li><li><a href="blog.html">Blog</a></li></ul></div>
+      <div><h4>Sito</h4><ul><li><a href="chi-siamo.html">Chi siamo</a></li><li><a href="contatti.html">Contatti</a></li></ul></div>
+      <div><h4>Legale</h4><ul><li><a href="privacy.html">Privacy Policy</a></li><li><a href="cookie.html">Cookie Policy</a></li><li><a href="disclaimer.html">Disclaimer</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 FiscoPedia.it</span><span>I calcoli sono indicativi e non sostituiscono il parere di un consulente fiscale.</span></div>
+  </div>
+</footer>
+
+<div id="cookie-banner" class="cookie-banner hidden">
+  <p>Questo sito utilizza cookie tecnici e, previo consenso, cookie di terze parti per personalizzare annunci e analizzare il traffico. <a href="cookie.html">Cookie Policy</a>.</p>
+  <div class="actions">
+    <button class="btn btn-secondary btn-sm" data-cookie="reject">Rifiuta</button>
+    <button class="btn btn-primary btn-sm" data-cookie="accept">Accetta</button>
+  </div>
+</div>
+
+<script src="assets/tfr.js"></script>
+<script src="assets/site.js"></script>
+<script>
+(() => {
+  const T = window.TfrCalc;
+  const state = { ral: 30000, anni: 8, inflazione: 2, crescita: 0 };
+
+  const fmt = n => "€" + Math.round(n).toLocaleString("it-IT");
+
+  function update() {
+    document.getElementById("ral-display").textContent = fmt(state.ral);
+    document.getElementById("anni-display").textContent = state.anni + " anni";
+    document.getElementById("infl-display").textContent = state.inflazione.toFixed(1) + "%";
+    document.getElementById("cresc-display").textContent = state.crescita.toFixed(1) + "%";
+
+    const r = T.calcolaTFR({
+      ralAnnua: state.ral,
+      anniServizio: state.anni,
+      inflazioneMediaAttesa: state.inflazione,
+      crescitaRalAnnua: state.crescita
+    });
+
+    document.getElementById("tfr-lordo").textContent = fmt(r.tfrLordo);
+    document.getElementById("tfr-sub").textContent =
+      "Aliquota media " + (r.aliquotaMediaStimata * 100).toFixed(1) + "% · Rivalutazione " + (r.tassoRivalutazioneApplicato * 100).toFixed(2) + "%/anno";
+
+    const ritenuta = r.tfrLordo - r.tfrNettoStimato;
+    document.getElementById("d-lordo").textContent = fmt(r.tfrLordo);
+    document.getElementById("d-ritenuta").textContent = "−" + fmt(ritenuta);
+    document.getElementById("d-netto").textContent = fmt(r.tfrNettoStimato);
+
+    ["ral", "anni", "inflazione", "crescita"].forEach(id => {
+      const el = document.getElementById(id);
+      const min = +el.min, max = +el.max;
+      el.style.setProperty("--slider-pct", ((el.value - min) / (max - min) * 100) + "%");
+    });
+  }
+
+  document.getElementById("ral").addEventListener("input", e => { state.ral = +e.target.value; update(); });
+  document.getElementById("anni").addEventListener("input", e => { state.anni = +e.target.value; update(); });
+  document.getElementById("inflazione").addEventListener("input", e => { state.inflazione = +e.target.value; update(); });
+  document.getElementById("crescita").addEventListener("input", e => { state.crescita = +e.target.value; update(); });
+
+  update();
+})();
+</script>
+
+</body>
+</html>
