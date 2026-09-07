@@ -1,9 +1,9 @@
 /* ─── FiscoPedia.it — Engine fiscale 2026 ──────────────────────────
  *  Calcolo RAL → Netto secondo:
- *  · IRPEF 2026: scaglioni 23% / 35% / 43%
+ *  · IRPEF 2026: scaglioni 23% / 33% / 43% (corretto 7/9/2026: 2° scaglione era 35%, sceso al 33% dal 1/1/2026 con L. 199/2025)
  *  · Detrazione lavoro dipendente: decrescente
  *  · INPS lavoratore: 9,19% (dipendente) / 5,84% (apprendista)
- *  · INPS datore: 28,03% (dipendente) / 11,50% (apprendista agevolato)
+ *  · INPS datore: 29,53% (dipendente) / 11,50% (apprendista agevolato)
  *  · Addizionale regionale: tabella 20 regioni
  *  · TFR: 6,91%
  *  · Forfettario: coeff. ATECO + imposta sostitutiva 5% / 15%
@@ -62,9 +62,9 @@
     if (imponibile <= 28000) {
       imposta = imponibile * 0.23;
     } else if (imponibile <= 50000) {
-      imposta = 28000 * 0.23 + (imponibile - 28000) * 0.35;
+      imposta = 28000 * 0.23 + (imponibile - 28000) * 0.33;
     } else {
-      imposta = 28000 * 0.23 + 22000 * 0.35 + (imponibile - 50000) * 0.43;
+      imposta = 28000 * 0.23 + 22000 * 0.33 + (imponibile - 50000) * 0.43;
     }
     return Math.max(0, imposta);
   }
