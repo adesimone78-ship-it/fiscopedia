@@ -494,17 +494,13 @@ p  { color: var(--text); text-wrap: pretty; }
 }
 .ad-slot {
   display: block;
-  min-height: 90px;
-  background: var(--surface);
-  border: 1px dashed var(--border-2);
-  border-radius: var(--r);
-  display: flex; align-items: center; justify-content: center;
-  color: var(--muted);
-  font-size: 12px;
-  padding: 16px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
-.ad-slot.ad-rect { max-width: 336px; min-height: 280px; margin-left: auto; margin-right: auto; }
-.ad-slot.ad-leader { min-height: 90px; max-width: 728px; margin-left: auto; margin-right: auto; }
+.ad-slot ins.adsbygoogle { width: 100%; }
+.ad-slot.ad-rect { max-width: 336px; }
+.ad-slot.ad-leader { max-width: 728px; }
 
 /* ─── Article content ─────────────────────────────────────────────────── */
 .article {
@@ -602,3 +598,6 @@ p  { color: var(--text); text-wrap: pretty; }
 .text-sub { color: var(--sub); }
 .text-accent { color: var(--accent); }
 .text-center { text-align: center; }
+
+/* Etichetta "Pubblicità" visibile solo quando l'annuncio è stato effettivamente caricato */
+.ad-wrap:not(:has(ins[data-ad-status="filled"])) .ad-label { display: none; }
