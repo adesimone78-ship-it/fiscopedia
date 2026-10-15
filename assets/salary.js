@@ -1,7 +1,11 @@
 /* ─── FiscoPedia.it — Engine fiscale 2026 ──────────────────────────
  *  Calcolo RAL → Netto secondo:
  *  · IRPEF 2026: scaglioni 23% / 33% / 43% (corretto 7/9/2026: 2° scaglione era 35%, sceso al 33% dal 1/1/2026 con L. 199/2025)
- *  · Detrazione lavoro dipendente: decrescente
+ *  · Detrazione lavoro dipendente art. 13 TUIR: 1.955 fino a 15.000;
+ *    1.910 + 1.190×(28.000−R)/13.000 fino a 28.000; 1.910×(50.000−R)/22.000
+ *    fino a 50.000; +65 € tra 25.000 e 35.000 (corretto 15/10/2026)
+ *  · Cuneo fiscale (L. 207/2024, c. 4-9): somma esente 7,1/5,3/4,8% fino a
+ *    20.000; ulteriore detrazione 1.000 € tra 20.000 e 32.000, decrescente a 40.000
  *  · INPS lavoratore: 9,19% (dipendente) / 5,84% (apprendista)
  *  · INPS datore: 29,53% (dipendente) / 11,50% (apprendista agevolato)
  *  · Addizionale regionale: tabella 20 regioni
@@ -69,19 +73,29 @@
     return Math.max(0, imposta);
   }
 
-  // Detrazione lavoro dipendente (semplificata, riforma 2024-2026)
-  function calcDetrazione(imponibile) {
-    if (imponibile <= 8500) return 1955;
-    if (imponibile <= 15000) return 1955;
-    if (imponibile <= 28000) {
-      // decrescente linearmente da 1.910 a 1.190 tra 15.000 e 28.000
-      return 1910 - ((imponibile - 15000) / 13000) * 720;
-    }
-    if (imponibile <= 50000) {
-      // da 1.190 a 0 tra 28.000 e 50.000
-      return 1190 * (1 - (imponibile - 28000) / 22000);
-    }
-    return 0;
+  // Detrazione lavoro dipendente (art. 13 TUIR, in vigore 2026)
+  function calcDetrazione(reddito) {
+    let d = 0;
+    if (reddito <= 15000) d = 1955;
+    else if (reddito <= 28000) d = 1910 + 1190 * (28000 - reddito) / 13000;
+    else if (reddito <= 50000) d = 1910 * (50000 - reddito) / 22000;
+    if (reddito > 25000 && reddito <= 35000) d += 65;
+    return d;
+  }
+
+  // Cuneo fiscale: somma esente (L. 207/2024, c. 4) — non concorre al reddito
+  function calcSommaEsente(reddito) {
+    if (reddito <= 0 || reddito > 20000) return 0;
+    if (reddito <= 8500) return reddito * 0.071;
+    if (reddito <= 15000) return reddito * 0.053;
+    return reddito * 0.048;
+  }
+
+  // Cuneo fiscale: ulteriore detrazione (L. 207/2024, c. 6)
+  function calcUlterioreDetrazione(reddito) {
+    if (reddito <= 20000 || reddito > 40000) return 0;
+    if (reddito <= 32000) return 1000;
+    return 1000 * (40000 - reddito) / 8000;
   }
 
   // ─── Calcolo principale dipendente ───────────────────────────────────
@@ -102,7 +116,10 @@
 
     const irpefLorda = calcIrpef(imponibileIrpef);
     const detrazione = calcDetrazione(imponibileIrpef);
-    const irpefNetta = Math.max(0, irpefLorda - detrazione);
+    const ulterioreDetrazione = calcUlterioreDetrazione(imponibileIrpef);
+    const irpefNetta = Math.max(0, irpefLorda - detrazione - ulterioreDetrazione);
+    // Somma esente cuneo fiscale: si aggiunge al netto, senza IRPEF né addizionali
+    const sommaEsente = calcSommaEsente(imponibileIrpef);
 
     const aliquotaAdd = (ADDIZIONALE_REGIONALE[regione] || 1.73) / 100;
     const addizionaleRegionale = imponibileIrpef * aliquotaAdd;
@@ -110,7 +127,7 @@
     const addizionaleComunale = imponibileIrpef * 0.008;
 
     const totaleImposte = irpefNetta + addizionaleRegionale + addizionaleComunale;
-    const nettoAnnuo = lordo - inpsLavoratore - totaleImposte;
+    const nettoAnnuo = lordo - inpsLavoratore - totaleImposte + sommaEsente;
     const nettoMensile = nettoAnnuo / mensilita;
 
     // Costi azienda
@@ -127,6 +144,8 @@
       imponibileIrpef,
       irpefLorda,
       detrazioneLavoro: detrazione,
+      ulterioreDetrazione,
+      sommaEsente,
       irpefNetta,
       addizionaleRegionale,
       addizionaleComunale,
@@ -176,6 +195,8 @@
     calcForfettario,
     calcIrpef,
     calcDetrazione,
+    calcSommaEsente,
+    calcUlterioreDetrazione,
     ADDIZIONALE_REGIONALE,
     COEFF_FORFETTARI,
     formatEuro,

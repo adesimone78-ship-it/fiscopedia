@@ -26,7 +26,7 @@
     "author": { "@type": "Organization", "name": "FiscoPedia.it" },
     "publisher": { "@type": "Organization", "name": "FiscoPedia.it", "url": "https://fiscopedia.it" },
     "datePublished": "2026-06-15",
-    "dateModified": "2026-09-07",
+    "dateModified": "2026-10-15",
     "url": "https://fiscopedia.it/blog/come-calcolare-stipendio-netto.html"
   }
   </script>
@@ -83,7 +83,7 @@
   <header style="margin-bottom:2rem;">
     <div style="display:flex;gap:.5rem;align-items:center;margin-bottom:.75rem;">
       <span style="background:var(--accent);color:#fff;padding:.2rem .7rem;border-radius:999px;font-size:.78rem;font-weight:600;">Stipendi</span>
-      <span style="color:var(--sub);font-size:.85rem;">15 giugno 2026 · aggiornato 7 settembre 2026 · 12 min di lettura</span>
+      <span style="color:var(--sub);font-size:.85rem;">15 giugno 2026 · aggiornato 15 ottobre 2026 · 12 min di lettura</span>
     </div>
     <h1 style="font-size:2rem;line-height:1.25;margin-bottom:1rem;">Come calcolare lo stipendio netto dalla RAL nel 2026</h1>
     <p style="font-size:1.1rem;color:var(--sub);line-height:1.6;">
@@ -96,7 +96,7 @@
   <article style="line-height:1.75;font-size:1.05rem;">
 
     <p>Ogni anno milioni di lavoratori italiani firmano un contratto senza sapere esattamente quanto porteranno a casa. La <strong>RAL (Retribuzione Annua Lorda)</strong> è il numero che compare nell'offerta di lavoro, ma quello che conta davvero è il <strong>netto mensile</strong> — ovvero quanto viene accreditato sul conto corrente ogni mese.</p>
-    <p>La differenza tra RAL e netto può essere enorme: per un lavoratore con RAL di 35.000€ lo stipendio netto mensile è circa 1.850–1.900€. In questa guida spieghiamo passo per passo come funziona il calcolo, con esempi reali e tabelle aggiornate al 2026.</p>
+    <p>La differenza tra RAL e netto può essere enorme: per un lavoratore con RAL di 35.000€ lo stipendio netto mensile è circa 2.000€. In questa guida spieghiamo passo per passo come funziona il calcolo, con esempi reali e tabelle aggiornate al 2026.</p>
 
     <h2>1. Cos'è la RAL e cosa include</h2>
     <p>La <strong>RAL (Retribuzione Annua Lorda)</strong> è la somma di tutte le mensilità lorde nell'arco di un anno. Comprende le mensilità base (12, 13 o 14), la <strong>tredicesima</strong> obbligatoria per quasi tutti i contratti e la <strong>quattordicesima</strong> dove prevista dal CCNL. Non fanno parte della RAL i rimborsi spese, i buoni pasto e i fringe benefit.</p>
@@ -137,81 +137,66 @@
     <p>Esempio con imponibile 31.783€: 28.000 × 23% = 6.440€ + 3.783 × 33% = 1.248€ = <strong>IRPEF lorda 7.688€</strong>.</p>
 
     <h2>5. Le detrazioni per lavoro dipendente</h2>
-    <p>Dall'IRPEF lorda si sottraggono le <strong>detrazioni per lavoro dipendente</strong> (art. 13 TUIR), che diminuiscono al crescere del reddito:</p>
+    <p>Dall'IRPEF lorda si sottrae la <strong>detrazione per lavoro dipendente</strong> (art. 13 TUIR), che si calcola con una formula diversa per ogni fascia di reddito complessivo (R):</p>
     <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
-      <thead><tr style="background:var(--accent);color:#fff;">
-        <th style="padding:.7rem 1rem;text-align:left;">Fascia di reddito</th>
-        <th style="padding:.7rem 1rem;text-align:right;">Detrazione indicativa</th>
-      </tr></thead>
+      <thead><tr style="background:var(--accent);color:#fff;"><th style="padding:.7rem 1rem;text-align:left;">Reddito complessivo</th><th style="padding:.7rem 1rem;text-align:right;">Detrazione annua</th></tr></thead>
       <tbody>
-        <tr style="border-bottom:1px solid var(--border);"><td style="padding:.7rem 1rem;">Fino a 15.000€</td><td style="padding:.7rem 1rem;text-align:right;">~1.880€</td></tr>
-        <tr style="border-bottom:1px solid var(--border);"><td style="padding:.7rem 1rem;">Da 15.001€ a 28.000€</td><td style="padding:.7rem 1rem;text-align:right;">~1.500–1.700€</td></tr>
-        <tr style="border-bottom:1px solid var(--border);"><td style="padding:.7rem 1rem;">Da 28.001€ a 50.000€</td><td style="padding:.7rem 1rem;text-align:right;">~1.000–1.400€</td></tr>
-        <tr style="border-bottom:1px solid var(--border);"><td style="padding:.7rem 1rem;">Oltre 50.000€</td><td style="padding:.7rem 1rem;text-align:right;">~400–800€</td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:.7rem 1rem;">Fino a 15.000€</td><td style="padding:.7rem 1rem;text-align:right;">1.955€</td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:.7rem 1rem;">Da 15.001€ a 28.000€</td><td style="padding:.7rem 1rem;text-align:right;">1.910 + 1.190 × (28.000 − R) / 13.000</td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:.7rem 1rem;">Da 28.001€ a 50.000€</td><td style="padding:.7rem 1rem;text-align:right;">1.910 × (50.000 − R) / 22.000</td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:.7rem 1rem;">Oltre 50.000€</td><td style="padding:.7rem 1rem;text-align:right;">0€</td></tr>
       </tbody>
     </table>
-    <p>Con imponibile 31.783€ la detrazione è circa 1.300€. IRPEF netta = 7.688 − 1.300 = <strong>6.388€</strong>.</p>
+    <p>Tra 25.000€ e 35.000€ di reddito la detrazione aumenta di altri <strong>65€</strong>. Con imponibile 31.783€: 1.910 × (50.000 − 31.783) / 22.000 = 1.582€, più 65€ = <strong>1.647€</strong>.</p>
+
+    <h3>Il taglio del cuneo fiscale</h3>
+    <p>Dal 2025 il vecchio esonero contributivo è stato sostituito da due misure fiscali stabili (Legge 207/2024), confermate nel 2026:</p>
+    <ul>
+      <li><strong>Fino a 20.000€ di reddito</strong>: una <strong>somma esente</strong>, pagata in busta paga e non tassata, pari al 7,1% del reddito da lavoro dipendente fino a 8.500€, al 5,3% fino a 15.000€ e al 4,8% fino a 20.000€. Esempio: con 18.000€ di reddito sono 864€ l'anno.</li>
+      <li><strong>Tra 20.000€ e 40.000€</strong>: un'<strong>ulteriore detrazione</strong> di 1.000€ fino a 32.000€ di reddito, che poi scende fino ad azzerarsi a 40.000€ (formula: 1.000 × (40.000 − R) / 8.000).</li>
+    </ul>
+    <p>Con imponibile 31.783€ spetta l'ulteriore detrazione piena di 1.000€. IRPEF netta = 7.689€ − 1.647€ − 1.000€ = <strong>5.042€</strong>.</p>
 
     <h2>6. Addizionali regionali e comunali</h2>
-    <p>Oltre all'IRPEF statale si pagano le <strong>addizionali locali</strong>: l'addizionale regionale (dall'1,23% al 2,93%) e quella comunale media (~0,80%).</p>
-    <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
-      <thead><tr style="background:var(--accent);color:#fff;">
-        <th style="padding:.7rem 1rem;text-align:left;">Regione</th>
-        <th style="padding:.7rem 1rem;text-align:center;">Aliquota regionale</th>
-        <th style="padding:.7rem 1rem;text-align:left;">Regione</th>
-        <th style="padding:.7rem 1rem;text-align:right;">Aliquota regionale</th>
-      </tr></thead>
-      <tbody>
-        <tr style="border-bottom:1px solid var(--border);"><td style="padding:.7rem 1rem;">Valle d'Aosta</td><td style="padding:.7rem 1rem;text-align:center;">1,23%</td><td style="padding:.7rem 1rem;">Lombardia</td><td style="padding:.7rem 1rem;text-align:right;">1,74%</td></tr>
-        <tr style="border-bottom:1px solid var(--border);"><td style="padding:.7rem 1rem;">Veneto</td><td style="padding:.7rem 1rem;text-align:center;">1,23%</td><td style="padding:.7rem 1rem;">Emilia-Romagna</td><td style="padding:.7rem 1rem;text-align:right;">1,94%</td></tr>
-        <tr style="border-bottom:1px solid var(--border);"><td style="padding:.7rem 1rem;">Piemonte</td><td style="padding:.7rem 1rem;text-align:center;">1,62%</td><td style="padding:.7rem 1rem;">Lazio</td><td style="padding:.7rem 1rem;text-align:right;">2,93%</td></tr>
-        <tr style="border-bottom:1px solid var(--border);"><td style="padding:.7rem 1rem;">Toscana</td><td style="padding:.7rem 1rem;text-align:center;">1,42%</td><td style="padding:.7rem 1rem;">Campania</td><td style="padding:.7rem 1rem;text-align:right;">2,03%</td></tr>
-        <tr style="border-bottom:1px solid var(--border);"><td style="padding:.7rem 1rem;">Sicilia</td><td style="padding:.7rem 1rem;text-align:center;">1,23%</td><td style="padding:.7rem 1rem;">Calabria</td><td style="padding:.7rem 1rem;text-align:right;">2,03%</td></tr>
-      </tbody>
-    </table>
+    <p>Oltre all'IRPEF statale si pagano le <strong>addizionali locali</strong>. L'addizionale regionale parte da un'aliquota base dell'1,23% e le regioni possono alzarla fino al 3,33%; molte la applicano per scaglioni di reddito, quindi chi guadagna di più paga un'aliquota più alta. L'addizionale comunale arriva al massimo allo 0,80%. Nel nostro calcolatore l'addizionale comunale è stimata allo 0,80% e quella regionale usa l'aliquota di base di ciascuna regione: per redditi medio-alti nelle regioni con aliquote a scaglioni il costo reale può essere più alto di qualche decina o centinaio di euro l'anno.</p>
 
     <h2>7. Il calcolo finale del netto</h2>
     <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
-      <thead><tr style="background:var(--accent);color:#fff;">
-        <th style="padding:.7rem 1rem;text-align:left;">Voce</th>
-        <th style="padding:.7rem 1rem;text-align:right;">Importo (RAL 35.000€, Lombardia)</th>
-      </tr></thead>
+      <thead><tr style="background:var(--accent);color:#fff;"><th style="padding:.7rem 1rem;text-align:left;">Voce</th><th style="padding:.7rem 1rem;text-align:right;">Importo (RAL 35.000€, Lombardia)</th></tr></thead>
       <tbody>
         <tr style="border-bottom:1px solid var(--border);"><td style="padding:.7rem 1rem;">RAL</td><td style="padding:.7rem 1rem;text-align:right;">+ 35.000€</td></tr>
-        <tr style="border-bottom:1px solid var(--border);"><td style="padding:.7rem 1rem;">− INPS lavoratore (9,19%)</td><td style="padding:.7rem 1rem;text-align:right;">− 3.217€</td></tr>
-        <tr style="border-bottom:1px solid var(--border);"><td style="padding:.7rem 1rem;">= Imponibile IRPEF</td><td style="padding:.7rem 1rem;text-align:right;">31.783€</td></tr>
-        <tr style="border-bottom:1px solid var(--border);"><td style="padding:.7rem 1rem;">− IRPEF netta</td><td style="padding:.7rem 1rem;text-align:right;">− 6.388€</td></tr>
-        <tr style="border-bottom:1px solid var(--border);"><td style="padding:.7rem 1rem;">− Addizionale regionale Lombardia (1,74%)</td><td style="padding:.7rem 1rem;text-align:right;">− 553€</td></tr>
-        <tr style="border-bottom:1px solid var(--border);"><td style="padding:.7rem 1rem;">− Addizionale comunale (media 0,80%)</td><td style="padding:.7rem 1rem;text-align:right;">− 254€</td></tr>
-        <tr style="background:var(--surface);font-weight:700;"><td style="padding:.7rem 1rem;">= Netto annuo</td><td style="padding:.7rem 1rem;text-align:right;">≈ 24.588€</td></tr>
-        <tr style="background:var(--surface);font-weight:700;"><td style="padding:.7rem 1rem;">= Netto mensile (su 13 mensilità)</td><td style="padding:.7rem 1rem;text-align:right;">≈ 1.891€/mese</td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:.7rem 1rem;">− INPS lavoratore (9,19%)</td><td style="padding:.7rem 1rem;text-align:right;">− 3.216€</td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:.7rem 1rem;">= Imponibile IRPEF</td><td style="padding:.7rem 1rem;text-align:right;">31.784€</td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:.7rem 1rem;">− IRPEF netta (dopo detrazione e cuneo fiscale)</td><td style="padding:.7rem 1rem;text-align:right;">− 5.042€</td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:.7rem 1rem;">− Addizionale regionale (aliquota base 1,23%)</td><td style="padding:.7rem 1rem;text-align:right;">− 391€</td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:.7rem 1rem;">− Addizionale comunale (0,80%)</td><td style="padding:.7rem 1rem;text-align:right;">− 254€</td></tr>
+        <tr style="background:var(--surface);font-weight:700;"><td style="padding:.7rem 1rem;">= Netto annuo</td><td style="padding:.7rem 1rem;text-align:right;">≈ 26.096€</td></tr>
+        <tr style="background:var(--surface);font-weight:700;"><td style="padding:.7rem 1rem;">= Netto mensile (su 13 mensilità)</td><td style="padding:.7rem 1rem;text-align:right;">≈ 2.007€/mese</td></tr>
       </tbody>
     </table>
 
     <h2>8. Esempi pratici per fascia di reddito</h2>
+    <p>Valori per un dipendente in Lombardia, 13 mensilità, senza familiari a carico, calcolati con le stesse regole del nostro calcolatore.</p>
     <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
-      <thead><tr style="background:var(--accent);color:#fff;">
-        <th style="padding:.7rem 1rem;text-align:left;">RAL</th>
-        <th style="padding:.7rem 1rem;text-align:center;">Netto mensile</th>
-        <th style="padding:.7rem 1rem;text-align:center;">Netto annuo</th>
-        <th style="padding:.7rem 1rem;text-align:right;">Aliquota effettiva</th>
-      </tr></thead>
+      <thead><tr style="background:var(--accent);color:#fff;"><th style="padding:.7rem 1rem;text-align:left;">RAL</th><th style="padding:.7rem 1rem;text-align:center;">Netto mensile</th><th style="padding:.7rem 1rem;text-align:center;">Netto annuo</th><th style="padding:.7rem 1rem;text-align:right;">Aliquota effettiva</th></tr></thead>
       <tbody>
-        <tr style="border-bottom:1px solid var(--border);"><td style="padding:.7rem 1rem;"><a href="../ral/20000.html">RAL 20.000€</a></td><td style="padding:.7rem 1rem;text-align:center;">~1.270€</td><td style="padding:.7rem 1rem;text-align:center;">~16.510€</td><td style="padding:.7rem 1rem;text-align:right;">~17%</td></tr>
-        <tr style="border-bottom:1px solid var(--border);"><td style="padding:.7rem 1rem;"><a href="../ral/25000.html">RAL 25.000€</a></td><td style="padding:.7rem 1rem;text-align:center;">~1.540€</td><td style="padding:.7rem 1rem;text-align:center;">~20.020€</td><td style="padding:.7rem 1rem;text-align:right;">~20%</td></tr>
-        <tr style="border-bottom:1px solid var(--border);"><td style="padding:.7rem 1rem;"><a href="../ral/30000.html">RAL 30.000€</a></td><td style="padding:.7rem 1rem;text-align:center;">~1.720€</td><td style="padding:.7rem 1rem;text-align:center;">~22.360€</td><td style="padding:.7rem 1rem;text-align:right;">~25%</td></tr>
-        <tr style="border-bottom:1px solid var(--border);"><td style="padding:.7rem 1rem;"><a href="../ral/35000.html">RAL 35.000€</a></td><td style="padding:.7rem 1rem;text-align:center;">~1.891€</td><td style="padding:.7rem 1rem;text-align:center;">~24.588€</td><td style="padding:.7rem 1rem;text-align:right;">~30%</td></tr>
-        <tr style="border-bottom:1px solid var(--border);"><td style="padding:.7rem 1rem;"><a href="../ral/40000.html">RAL 40.000€</a></td><td style="padding:.7rem 1rem;text-align:center;">~2.093€</td><td style="padding:.7rem 1rem;text-align:center;">~27.206€</td><td style="padding:.7rem 1rem;text-align:right;">~32%</td></tr>
-        <tr style="border-bottom:1px solid var(--border);"><td style="padding:.7rem 1rem;"><a href="../ral/50000.html">RAL 50.000€</a></td><td style="padding:.7rem 1rem;text-align:center;">~2.427€</td><td style="padding:.7rem 1rem;text-align:center;">~31.548€</td><td style="padding:.7rem 1rem;text-align:right;">~37%</td></tr>
-        <tr style="border-bottom:1px solid var(--border);"><td style="padding:.7rem 1rem;"><a href="../ral/75000.html">RAL 75.000€</a></td><td style="padding:.7rem 1rem;text-align:center;">~3.134€</td><td style="padding:.7rem 1rem;text-align:center;">~40.740€</td><td style="padding:.7rem 1rem;text-align:right;">~46%</td></tr>
-        <tr style="border-bottom:1px solid var(--border);"><td style="padding:.7rem 1rem;"><a href="../ral/100000.html">RAL 100.000€</a></td><td style="padding:.7rem 1rem;text-align:center;">~3.834€</td><td style="padding:.7rem 1rem;text-align:center;">~49.840€</td><td style="padding:.7rem 1rem;text-align:right;">~50%</td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:.7rem 1rem;"><a href="../ral/20000.html">RAL 20.000€</a></td><td style="padding:.7rem 1rem;text-align:center;">~1.331€</td><td style="padding:.7rem 1rem;text-align:center;">~17.298€</td><td style="padding:.7rem 1rem;text-align:right;">~14%</td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:.7rem 1rem;"><a href="../ral/25000.html">RAL 25.000€</a></td><td style="padding:.7rem 1rem;text-align:center;">~1.570€</td><td style="padding:.7rem 1rem;text-align:center;">~20.415€</td><td style="padding:.7rem 1rem;text-align:right;">~18%</td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:.7rem 1rem;"><a href="../ral/30000.html">RAL 30.000€</a></td><td style="padding:.7rem 1rem;text-align:center;">~1.805€</td><td style="padding:.7rem 1rem;text-align:center;">~23.468€</td><td style="padding:.7rem 1rem;text-align:right;">~22%</td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:.7rem 1rem;"><a href="../ral/35000.html">RAL 35.000€</a></td><td style="padding:.7rem 1rem;text-align:center;">~2.007€</td><td style="padding:.7rem 1rem;text-align:center;">~26.096€</td><td style="padding:.7rem 1rem;text-align:right;">~25%</td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:.7rem 1rem;"><a href="../ral/40000.html">RAL 40.000€</a></td><td style="padding:.7rem 1rem;text-align:center;">~2.157€</td><td style="padding:.7rem 1rem;text-align:center;">~28.047€</td><td style="padding:.7rem 1rem;text-align:right;">~30%</td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:.7rem 1rem;"><a href="../ral/50000.html">RAL 50.000€</a></td><td style="padding:.7rem 1rem;text-align:center;">~2.515€</td><td style="padding:.7rem 1rem;text-align:center;">~32.699€</td><td style="padding:.7rem 1rem;text-align:right;">~35%</td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:.7rem 1rem;"><a href="../ral/75000.html">RAL 75.000€</a></td><td style="padding:.7rem 1rem;text-align:center;">~3.480€</td><td style="padding:.7rem 1rem;text-align:center;">~45.239€</td><td style="padding:.7rem 1rem;text-align:right;">~40%</td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:.7rem 1rem;"><a href="../ral/100000.html">RAL 100.000€</a></td><td style="padding:.7rem 1rem;text-align:center;">~4.440€</td><td style="padding:.7rem 1rem;text-align:center;">~57.718€</td><td style="padding:.7rem 1rem;text-align:right;">~42%</td></tr>
       </tbody>
     </table>
+    <p>L'aliquota effettiva comprende INPS, IRPEF e addizionali. Con RAL 20.000€ è così bassa perché l'imponibile resta sotto i 20.000€ e si riceve la somma esente del cuneo fiscale (circa 870€).</p>
 
     <div class="ads ads-in-article" style="margin:2rem 0;"></div>
 
     <h2>9. Il costo azienda</h2>
-    <p>Il datore di lavoro paga, oltre alla RAL, l'INPS datore (~23,81%) e il TFR (6,91%). Per RAL 35.000€ il costo azienda totale è circa <strong>45.750€/anno</strong> (35.000 + 8.334 di INPS datore + 2.418 di TFR). Ogni euro di aumento netto in busta paga costa all'azienda circa <strong>2,20–2,40€</strong> di costo complessivo.</p>
+    <p>Il datore di lavoro paga, oltre alla RAL, i contributi INPS a suo carico (circa il 30%, ma l'aliquota esatta dipende da settore e dimensione dell'azienda) e accantona il TFR (RAL ÷ 13,5). Per RAL 35.000€ il costo azienda totale è circa <strong>47.900€/anno</strong> (35.000 + 10.336 di INPS datore al 29,53% + 2.593 di TFR).</p>
+    <p>Attenzione ai piccoli aumenti in questa fascia: con RAL 35.000€, 1.000€ lordi in più fanno arrivare in busta solo circa <strong>425€ netti</strong>, perché oltre all'IRPEF al 33% si riducono sia la detrazione per lavoro dipendente sia l'ulteriore detrazione del cuneo fiscale. All'azienda quei 425€ netti costano circa 1.370€.</p>
 
     <h2>10. Il TFR: cos'è e come si accumula</h2>
     <p>Il <strong>TFR</strong> si accumula al ritmo del <strong>6,91% della RAL annua</strong>. Per RAL 35.000€: TFR annuo ≈ <strong>2.418€</strong> (~202€/mese). Viene rivalutato dell'1,5% più il 75% dell'inflazione ISTAT. Approfondisci: <a href="https://fiscopedia.it/blog/tfr-come-funziona.html">TFR: come funziona nel 2026</a>.</p>
@@ -223,7 +208,7 @@
 
     <details style="border:1px solid var(--border);border-radius:.75rem;padding:1rem;margin-bottom:1rem;">
       <summary style="cursor:pointer;font-weight:600;">Quanto prendo netto con 30.000€ di RAL?</summary>
-      <p style="margin-top:.75rem;">Con RAL 30.000€ in Lombardia su 13 mensilità porti a casa circa <strong>1.720€ netti al mese</strong> (22.360€ all'anno). La cifra varia in base alla regione di residenza.</p>
+      <p style="margin-top:.75rem;">Con RAL 30.000€ in Lombardia su 13 mensilità porti a casa circa <strong>1.805€ netti al mese</strong> (23.468€ all'anno). La cifra varia in base alla regione di residenza.</p>
     </details>
 
     <details style="border:1px solid var(--border);border-radius:.75rem;padding:1rem;margin-bottom:1rem;">

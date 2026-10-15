@@ -169,9 +169,10 @@
             <tr><td>RAL + Bonus</td><td id="b-lordo">€0</td></tr>
             <tr class="negative"><td>− INPS lavoratore (9,19%)</td><td id="b-inps">€0</td></tr>
             <tr><td>= Imponibile IRPEF</td><td id="b-imp">€0</td></tr>
-            <tr class="negative"><td>− IRPEF netta</td><td id="b-irpef">€0</td></tr>
+            <tr class="negative"><td>− IRPEF netta <small style="color:var(--sub)">(dopo detrazioni e cuneo fiscale)</small></td><td id="b-irpef">€0</td></tr>
             <tr class="negative"><td>− Addizionale regionale</td><td id="b-add">€0</td></tr>
             <tr class="negative"><td>− Addizionale comunale (media)</td><td id="b-com">€0</td></tr>
+            <tr id="row-somma" hidden><td>+ Somma esente cuneo fiscale (non tassata)</td><td id="b-somma">€0</td></tr>
             <tr class="total"><td>= Netto annuo</td><td id="b-netto">€0</td></tr>
           </tbody>
         </table>
@@ -235,7 +236,7 @@
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7v10l10 5 10-5V7L12 2z"/><polyline points="2 7 12 12 22 7"/><line x1="12" y1="22" x2="12" y2="12"/></svg>
         </div>
         <h3>− IRPEF a scaglioni</h3>
-        <p>Applichiamo gli scaglioni IRPEF 2026 (23%, 33%, 43%) e sottraiamo la detrazione per lavoro dipendente, che si riduce gradualmente con il reddito.</p>
+        <p>Applichiamo gli scaglioni IRPEF 2026 (23%, 33%, 43%) e sottraiamo la detrazione per lavoro dipendente, che si riduce gradualmente con il reddito, più il taglio del cuneo fiscale: una somma esente fino a 20.000 € di reddito e un'ulteriore detrazione fino a 40.000 €.</p>
       </div>
 
       <div class="feature">
@@ -316,7 +317,7 @@
         <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
       </summary>
       <div class="faq-a">
-        Gli scaglioni IRPEF 2026 sono tre: <strong>23%</strong> fino a 28.000€, <strong>33%</strong> tra 28.001€ e 50.000€, <strong>43%</strong> oltre i 50.000€. A questi si aggiungono le addizionali regionali e comunali. Esiste poi una <strong>detrazione per lavoro dipendente</strong> che si applica in modo decrescente al crescere del reddito.
+        Gli scaglioni IRPEF 2026 sono tre: <strong>23%</strong> fino a 28.000€, <strong>33%</strong> tra 28.001€ e 50.000€, <strong>43%</strong> oltre i 50.000€. A questi si aggiungono le addizionali regionali e comunali. Esiste poi una <strong>detrazione per lavoro dipendente</strong> che si applica in modo decrescente al crescere del reddito e si azzera a 50.000€, e il <strong>taglio del cuneo fiscale</strong> (L. 207/2024): una somma esente fino a 20.000€ di reddito e un'ulteriore detrazione di 1.000€ tra 20.000€ e 32.000€, che si riduce fino ad azzerarsi a 40.000€.
       </div>
     </details>
 
@@ -413,25 +414,25 @@
       <a href="professioni/insegnante.html" class="card card-hover" style="text-decoration:none">
         <span class="tag tag-green">Scuola</span>
         <h3 style="font-size:18px;margin:12px 0 6px">Insegnante</h3>
-        <p style="color:var(--sub);font-size:14px;margin-bottom:14px">RAL media €28.000 · netto ~€1.700/mese</p>
+        <p style="color:var(--sub);font-size:14px;margin-bottom:14px">RAL media €28.000 · netto ~€1.710/mese</p>
         <span style="color:var(--accent);font-weight:600;font-size:13px">Scopri di più →</span>
       </a>
       <a href="professioni/ingegnere.html" class="card card-hover" style="text-decoration:none">
         <span class="tag tag-purple">Tech</span>
         <h3 style="font-size:18px;margin:12px 0 6px">Ingegnere</h3>
-        <p style="color:var(--sub);font-size:14px;margin-bottom:14px">RAL media €45.000 · netto ~€2.350/mese</p>
+        <p style="color:var(--sub);font-size:14px;margin-bottom:14px">RAL media €45.000 · netto ~€2.320/mese</p>
         <span style="color:var(--accent);font-weight:600;font-size:13px">Scopri di più →</span>
       </a>
       <a href="professioni/medico.html" class="card card-hover" style="text-decoration:none">
         <span class="tag tag-red">Sanità</span>
         <h3 style="font-size:18px;margin:12px 0 6px">Medico</h3>
-        <p style="color:var(--sub);font-size:14px;margin-bottom:14px">RAL media €52.000 · netto ~€2.580/mese</p>
+        <p style="color:var(--sub);font-size:14px;margin-bottom:14px">RAL media €52.000 · netto ~€2.590/mese</p>
         <span style="color:var(--accent);font-weight:600;font-size:13px">Scopri di più →</span>
       </a>
       <a href="professioni/infermiere.html" class="card card-hover" style="text-decoration:none">
         <span class="tag tag-green">Sanità</span>
         <h3 style="font-size:18px;margin:12px 0 6px">Infermiere</h3>
-        <p style="color:var(--sub);font-size:14px;margin-bottom:14px">RAL media €27.000 · netto ~€1.640/mese</p>
+        <p style="color:var(--sub);font-size:14px;margin-bottom:14px">RAL media €27.000 · netto ~€1.660/mese</p>
         <span style="color:var(--accent);font-weight:600;font-size:13px">Scopri di più →</span>
       </a>
       <a href="professioni/programmatore.html" class="card card-hover" style="text-decoration:none">
@@ -533,7 +534,7 @@
 
 <!-- ─── COOKIE BANNER ──────────────────────────────────────────────── -->
 
-<script src="assets/salary.js"></script>
+<script src="assets/salary.js?v=20261015"></script>
 <script src="assets/site.js"></script>
 <script>
 (() => {
@@ -571,6 +572,8 @@
     document.getElementById("b-irpef").textContent = "−" + fmt(r.irpefNetta);
     document.getElementById("b-add").textContent = "−" + fmt(r.addizionaleRegionale);
     document.getElementById("b-com").textContent = "−" + fmt(r.addizionaleComunale);
+    document.getElementById("b-somma").textContent = "+" + fmt(r.sommaEsente);
+    document.getElementById("row-somma").hidden = !(r.sommaEsente > 0);
     document.getElementById("b-netto").textContent = fmt(r.nettoAnnuo);
 
     // Slider gradient
