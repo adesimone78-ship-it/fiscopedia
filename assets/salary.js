@@ -8,7 +8,7 @@
  *    20.000; ulteriore detrazione 1.000 € tra 20.000 e 32.000, decrescente a 40.000
  *  · INPS lavoratore: 9,19% (dipendente) / 5,84% (apprendista)
  *  · INPS datore: 29,53% (dipendente) / 11,50% (apprendista agevolato)
- *  · Addizionale regionale: tabella 20 regioni
+ *  · Addizionale regionale 2026: scaglioni e regole di ogni regione (fonte MEF, verificate 20/10/2026)
  *  · TFR: 6,91%
  *  · Forfettario: coeff. ATECO + imposta sostitutiva 5% / 15%
  *
@@ -19,30 +19,73 @@
 (function (global) {
   "use strict";
 
-  // ─── Addizionale regionale (aliquote medie 2026, %) ──────────────────
-  // Fonte: delibere regionali vigenti 2026 (aggiornare ogni gennaio)
+  // ─── Addizionale regionale IRPEF 2026 ────────────────────────────────
+  // Fonte: Dipartimento delle Finanze (MEF), "Addizionale regionale all'Irpef",
+  // aliquote per l'anno d'imposta 2026 pubblicate tra gennaio e giugno 2026
+  // (Molise 19/6/2026, Puglia 29/5/2026). Verificate il 20/10/2026.
+  // Aliquote in % per scaglione, applicate in modo progressivo come l'IRPEF
+  // (fino a 15.000 / fino a 28.000 / fino a 50.000 / oltre), salvo le regole
+  // particolari indicate in "speciale". Base: reddito imponibile IRPEF.
+  // Non sono calcolate le detrazioni regionali per figli o disabilità.
+  const S4 = [15000, 28000, 50000, Infinity];
   const ADDIZIONALE_REGIONALE = {
-    "Abruzzo":               1.73,
-    "Basilicata":            1.23,
-    "Calabria":              2.30,
-    "Campania":              2.20,
-    "Emilia-Romagna":        1.33,
-    "Friuli-Venezia Giulia": 1.23,
-    "Lazio":                 1.73,
-    "Liguria":               1.23,
-    "Lombardia":             1.23,
-    "Marche":                1.50,
-    "Molise":                2.16,
-    "Piemonte":              1.73,
-    "Puglia":                1.23,
-    "Sardegna":              1.23,
-    "Sicilia":               1.23,
-    "Toscana":               1.43,
-    "Trentino-Alto Adige":   1.23,
-    "Umbria":                1.53,
-    "Valle d'Aosta":         1.23,
-    "Veneto":                1.23,
+    "Abruzzo":               { aliquote: [1.67, 1.67, 2.87, 3.33] },
+    "Basilicata":            { aliquote: [1.23, 1.23, 1.23, 1.23] },
+    "Bolzano (prov. aut.)":  { aliquote: [1.23, 1.23, 1.23, 1.73], speciale: "bolzano" },
+    "Calabria":              { aliquote: [1.73, 1.73, 1.73, 1.73] },
+    "Campania":              { aliquote: [1.73, 2.96, 3.20, 3.33] },
+    "Emilia-Romagna":        { aliquote: [1.33, 1.93, 2.78, 3.33] },
+    "Friuli-Venezia Giulia": { aliquote: [1.23, 1.23, 1.23, 1.23], speciale: "fvg" },
+    "Lazio":                 { aliquote: [1.73, 3.33, 3.33, 3.33], speciale: "lazio" },
+    "Liguria":               { aliquote: [1.23, 1.23, 3.18, 3.23] },
+    "Lombardia":             { aliquote: [1.23, 1.58, 1.72, 1.73] },
+    "Marche":                { aliquote: [1.23, 1.53, 1.70, 1.73] },
+    "Molise":                { aliquote: [2.03, 2.23, 3.63, 3.63] },
+    "Piemonte":              { aliquote: [1.62, 2.68, 3.31, 3.33] },
+    "Puglia":                { aliquote: [1.33, 2.13, 3.23, 3.33] },
+    "Sardegna":              { aliquote: [1.23, 1.23, 1.23, 1.23] },
+    "Sicilia":               { aliquote: [1.23, 1.23, 1.23, 1.23] },
+    "Toscana":               { aliquote: [1.42, 1.43, 3.32, 3.33] },
+    "Trento (prov. aut.)":   { aliquote: [1.23, 1.23, 1.23, 1.73], speciale: "trento" },
+    "Umbria":                { aliquote: [1.73, 3.02, 3.12, 3.33], speciale: "umbria" },
+    "Valle d'Aosta":         { aliquote: [1.23, 1.23, 1.23, 1.23], speciale: "vda" },
+    "Veneto":                { aliquote: [1.23, 1.23, 1.23, 1.23] },
   };
+
+  function progressiva(R, aliquote) {
+    let imposta = 0, prev = 0;
+    for (let i = 0; i < S4.length && R > prev; i++) {
+      imposta += (Math.min(R, S4[i]) - prev) * aliquote[i] / 100;
+      prev = S4[i];
+    }
+    return imposta;
+  }
+
+  function calcAddizionaleRegionale(R, regione) {
+    const cfg = ADDIZIONALE_REGIONALE[regione] || ADDIZIONALE_REGIONALE["Lombardia"];
+    if (R <= 0) return 0;
+    switch (cfg.speciale) {
+      case "fvg":    // aliquota sull'intero imponibile: 0,70% fino a 15.000, poi 1,23%
+        return R * (R <= 15000 ? 0.0070 : 0.0123);
+      case "vda":    // esenti fino a 15.000, poi 1,23% sull'intero imponibile
+        return R <= 15000 ? 0 : R * 0.0123;
+      case "lazio":  // fino a 28.000: 1,73% sull'intero; 28.001-30.000: detrazione 60 €
+        if (R <= 28000) return R * 0.0173;
+        return Math.max(0, progressiva(R, cfg.aliquote) - (R <= 30000 ? 60 : 0));
+      case "umbria": // fino a 28.000 niente maggiorazioni (1,23%); 28.001-50.000: detrazione 150 €
+        if (R <= 28000) return R * 0.0123;
+        return Math.max(0, progressiva(R, cfg.aliquote) - (R <= 50000 ? 150 : 0));
+      case "trento": // fino a 30.000 deduzione di 30.000 €: addizionale azzerata
+        return R <= 30000 ? 0 : progressiva(R, cfg.aliquote);
+      case "bolzano": { // detrazione 430,50 € fino a 90.000; oltre 50.000 fino a 125 € in più
+        let detr = R <= 90000 ? 430.5 : 0;
+        if (R > 50000) detr += 125 * Math.min(1, (R - 50000) / 25000);
+        return Math.max(0, progressiva(R, cfg.aliquote) - detr);
+      }
+      default:
+        return progressiva(R, cfg.aliquote);
+    }
+  }
 
   // ─── Coefficienti redditività regime forfettario ─────────────────────
   const COEFF_FORFETTARI = {
@@ -121,10 +164,11 @@
     // Somma esente cuneo fiscale: si aggiunge al netto, senza IRPEF né addizionali
     const sommaEsente = calcSommaEsente(imponibileIrpef);
 
-    const aliquotaAdd = (ADDIZIONALE_REGIONALE[regione] || 1.73) / 100;
-    const addizionaleRegionale = imponibileIrpef * aliquotaAdd;
+    // Le addizionali sono dovute solo se, dopo le detrazioni, resta IRPEF da pagare
+    const dovuteAddizionali = irpefNetta > 0;
+    const addizionaleRegionale = dovuteAddizionali ? calcAddizionaleRegionale(imponibileIrpef, regione) : 0;
     // Addizionale comunale media stimata 0,80%
-    const addizionaleComunale = imponibileIrpef * 0.008;
+    const addizionaleComunale = dovuteAddizionali ? imponibileIrpef * 0.008 : 0;
 
     const totaleImposte = irpefNetta + addizionaleRegionale + addizionaleComunale;
     const nettoAnnuo = lordo - inpsLavoratore - totaleImposte + sommaEsente;
@@ -198,6 +242,7 @@
     calcSommaEsente,
     calcUlterioreDetrazione,
     ADDIZIONALE_REGIONALE,
+    calcAddizionaleRegionale,
     COEFF_FORFETTARI,
     formatEuro,
     formatEuro2,
