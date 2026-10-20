@@ -116,7 +116,7 @@ p  { color: var(--text); text-wrap: pretty; }
   font-weight: 800;
   font-size: 18px;
   color: var(--text);
-  display: flex; align-items: center; gap: 8px;
+  display: flex; align-items: center; gap: 3px;
 }
 .brand .dot { color: var(--accent); }
 .brand-logo {
@@ -125,7 +125,7 @@ p  { color: var(--text); text-wrap: pretty; }
   background: linear-gradient(135deg, var(--accent), #8b5cf6);
   display: grid; place-items: center;
   color: #fff;
-  font-weight: 800; font-size: 15px;
+  font-weight: 800; font-size: 18px;
   font-family: var(--font-display);
   box-shadow: 0 4px 12px -4px color-mix(in oklab, var(--accent) 70%, transparent);
 }
@@ -601,3 +601,8 @@ p  { color: var(--text); text-wrap: pretty; }
 
 /* Etichetta "Pubblicità" visibile solo quando l'annuncio è stato effettivamente caricato */
 .ad-wrap:not(:has(ins[data-ad-status="filled"])) .ad-label { display: none; }
+
+/* Tabelle: su schermi stretti scorrono dentro il riquadro invece di allargare la pagina */
+@media (max-width: 700px) {
+  .prose table, main table { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+}
