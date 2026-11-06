@@ -96,6 +96,9 @@ p  { color: var(--text); text-wrap: pretty; }
 .center { text-align: center; }
 .divider { height: 1px; background: var(--border); margin: 0; border: 0; }
 
+/* Ancore: la riga raggiunta da un link #... non finisce sotto il menu fisso */
+[id] { scroll-margin-top: 84px; }
+
 /* ─── Navbar ──────────────────────────────────────────────────────────── */
 .nav {
   position: sticky; top: 0; z-index: 50;
